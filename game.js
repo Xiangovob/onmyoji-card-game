@@ -18,6 +18,7 @@ function createPlayer(name){
         bench: characterData.map((char, index) => ({
             ...char,
             passive: char.passive || [],
+            passiveName: char.passiveName || "無",
             currentHp: char.hp,
             shield: 0,
             isDead: false,
@@ -194,8 +195,6 @@ function doCombat(attackerSide, defenderSide){
 }
 
 function dealDamage(unit, damage){
-    let originalDamage = damage;
-
     if(unit.shield > 0){
         let block = Math.min(unit.shield, damage);
         unit.shield -= block;
@@ -662,7 +661,7 @@ function render(){
     <div class="card battle-card" onclick="selectTarget('enemy', 'combat')">
         ${
             enemy.combat
-            ? `${enemy.combat.name}<br>HP:${enemy.combat.currentHp}/${enemy.combat.hp}<br>ATK:${enemy.combat.atk}<br>盾:${enemy.combat.shield}`
+            ? `${enemy.combat.name}<br>HP:${enemy.combat.currentHp}/${enemy.combat.hp}<br>ATK:${enemy.combat.atk}<br>盾:${enemy.combat.shield}<br>被動:${enemy.combat.passiveName}`
             : "空"
         }
     </div>
@@ -701,7 +700,7 @@ function render(){
     <div class="card battle-card" onclick="selectTarget('player', 'combat')">
         ${
             player.combat
-            ? `${player.combat.name}<br>HP:${player.combat.currentHp}/${player.combat.hp}<br>ATK:${player.combat.atk}<br>盾:${player.combat.shield}<br>被動:${player.combat.passive.join(" / ")}`
+            ? `${player.combat.name}<br>HP:${player.combat.currentHp}/${player.combat.hp}<br>ATK:${player.combat.atk}<br>盾:${player.combat.shield}<br>被動:${player.combat.passiveName}`
             : "空"
         }
     </div>
@@ -715,7 +714,7 @@ function render(){
                     HP:${unit.currentHp}/${unit.hp}<br>
                     ATK:${unit.atk}<br>
                     盾:${unit.shield}<br>
-                    被動:${unit.passive.join(" / ")}<br>
+                    被動:${unit.passiveName}<br>
                     ${unit.isDead ? `復活:${unit.reviveCounter}` : ""}
                 </div>
                 <button onclick="enterCombat(${index})" ${unit.isDead ? "disabled" : ""}>

@@ -41,9 +41,11 @@ h1{
     border:1px solid white;
     padding:10px;
     margin:10px;
-    width:80px;
+    width:140px;
+    min-height:180px;
     cursor:pointer;
     background:#333;
+    word-break:break-word;
 }
 
 button{

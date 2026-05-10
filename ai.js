@@ -1,117 +1,102 @@
-function endTurn(){
-  if(gameOver) return;
+function enemyTurn(){
+    addLog("敵方回合開始");
 
-  addLog("你的回合結束");
+    startTurn(enemy);
 
-  aiTurn();
+    let playable = enemy.hand.find(card => {
+        let owner = enemy.bench.find(c => c.id === card.owner);
+        return owner && !owner.isDead && card.cost <= enemy.energy;
+    });
 
-  if(gameOver) return;
+    if(playable){
+        let index = enemy.hand.indexOf(playable);
+        enemyUseCard(index);
+    }else{
+        enemyNormalAttack();
+    }
 
-  player.energy = 3;
-  drawCards(player, 2);
+    addLog("敵方回合結束");
 
-  render();
+    checkDeaths(player);
+    checkDeaths(enemy);
+    checkWin();
 }
 
-function aiTurn(){
-  enemy.energy = 3;
+function enemyUseCard(index){
+    let card = enemy.hand[index];
+    let owner = enemy.bench.find(c => c.id === card.owner);
 
-  drawCards(enemy, 2);
-
-  if(gameOver) return;
-
-  addLog("敵方回合開始");
-
-  for(let i = enemy.hand.length - 1; i >= 0; i--){
-    let card = enemy.hand[i];
-
-    if(card.cost > enemy.energy){
-      continue;
-    }
+    if(!owner || owner.isDead) return;
 
     enemy.energy -= card.cost;
 
-    if(card.type === "attack"){
-      let target = getAlivePlayerTarget();
-
-      if(target === -1){
-        player.leaderHp -= card.damage;
-        addLog(`敵人直接攻擊本體，造成 ${card.damage} 傷害`);
-      }else{
-        dealDamage("player", target, card.damage);
-        addLog(`敵人使用 ${card.name}，對我${target + 1}造成 ${card.damage} 傷害`);
-      }
-    }
-
-    if(card.type === "heal"){
-      let target = getLowestHpEnemy();
-
-      if(target !== -1){
-        let healed = healTarget("enemy", target, card.heal);
-
-        if(healed){
-          addLog(`敵人使用 ${card.name}，敵${target + 1}回復 ${card.heal} 血`);
+    if(card.type === "spell"){
+        if(card.tags.includes("damage")){
+            if(player.combat){
+                dealDamage(player.combat, card.damage);
+                addLog(`敵人使用${card.name}，攻擊我方戰鬥區`);
+            }else{
+                player.coreHp -= card.damage;
+                addLog(`敵人使用${card.name}，攻擊我方本體`);
+            }
         }
-      }
+
+        if(card.tags.includes("heal")){
+            healTarget(owner, card.heal);
+            addLog(`敵人使用${card.name}，治療${owner.name}`);
+        }
+
+        if(card.tags.includes("shield")){
+            owner.shield += card.shield;
+            addLog(`敵人使用${card.name}，${owner.name}獲得護盾`);
+        }
     }
 
-    if(card.type === "defense"){
-      let target = getLowestHpEnemy();
+    if(card.type === "combat"){
+        enemy.combat = owner;
+        addLog(`敵人${owner.name}使用戰鬥牌${card.name}出戰`);
 
-      if(target !== -1){
-        enemy.shield[target] += card.shield;
-        addLog(`敵人使用 ${card.name}，敵${target + 1}獲得 ${card.shield} 點護盾`);
-      }
+        if(card.damage){
+            owner.atk += card.damage;
+        }
+
+        doCombat(enemy, player);
+
+        if(card.damage){
+            owner.atk -= card.damage;
+        }
     }
 
-    let usedCard = enemy.hand.splice(i, 1)[0];
+    let usedCard = enemy.hand.splice(index, 1)[0];
     enemy.discardPile.push(usedCard);
 
+    checkDeaths(player);
+    checkDeaths(enemy);
     checkWin();
-
-    if(gameOver) return;
-  }
-
-  addLog("敵方回合結束");
-  checkWin();
 }
 
-function getAlivePlayerTarget(){
-  let alive = [];
-
-  player.hp.forEach((hp, index) => {
-    if(hp > 0){
-      alive.push(index);
+function enemyNormalAttack(){
+    if(enemy.attackChance <= 0){
+        addLog("敵方沒有出擊次數");
+        return;
     }
-  });
 
-  if(alive.length === 0){
-    return -1;
-  }
+    let alive = enemy.bench.filter(c => !c.isDead);
 
-  return alive[Math.floor(Math.random() * alive.length)];
-}
-
-function getLowestHpEnemy(){
-  let alive = [];
-
-  enemy.hp.forEach((hp, index) => {
-    if(hp > 0){
-      alive.push(index);
+    if(alive.length <= 0){
+        addLog("敵方沒有可出擊角色");
+        return;
     }
-  });
 
-  if(alive.length === 0){
-    return -1;
-  }
+    enemy.attackChance--;
 
-  let target = alive[0];
+    enemy.combat = alive[Math.floor(Math.random() * alive.length)];
 
-  alive.forEach(index => {
-    if(enemy.hp[index] < enemy.hp[target]){
-      target = index;
-    }
-  });
+    addLog(`敵方${enemy.combat.name}消耗1次出擊次數並出戰`);
 
-  return target;
+    doCombat(enemy, player);
+
+    checkDeaths(player);
+    checkDeaths(enemy);
+    checkWin();
 }

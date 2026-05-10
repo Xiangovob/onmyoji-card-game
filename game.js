@@ -675,7 +675,7 @@ function render(){
                 HP:${unit.currentHp}/${unit.hp}<br>
                 ATK:${unit.atk}<br>
                 盾:${unit.shield}<br>
-                被動:${unit.passive.join(" / ")}<br>
+                被動:${unit.passiveName}<br>
                 ${unit.isDead ? `復活:${unit.reviveCounter}` : ""}
             </div>
         `).join("")

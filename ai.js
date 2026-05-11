@@ -1,6 +1,4 @@
 function enemyTurn(){
-    addLog("敵方回合開始");
-
     startTurn(enemy);
 
     let playable = enemy.hand.find(card => {
@@ -11,7 +9,9 @@ function enemyTurn(){
     if(playable){
         let index = enemy.hand.indexOf(playable);
         enemyUseCard(index);
-    }else{
+    }
+
+    if(!gameOver){
         enemyNormalAttack();
     }
 
@@ -20,6 +20,7 @@ function enemyTurn(){
     checkDeaths(player);
     checkDeaths(enemy);
     checkWin();
+    render();
 }
 
 function enemyUseCard(index){
@@ -32,10 +33,19 @@ function enemyUseCard(index){
 
     if(card.type === "spell"){
         if(card.tags.includes("damage")){
-            if(player.combat){
-                dealDamage(player.combat, card.damage);
-                addLog(`敵人使用${card.name}，攻擊我方戰鬥區`);
+
+            let target = null;
+
+            if(player.combat && !player.combat.isDead){
+                target = player.combat;
             }else{
+                target = player.bench.find(unit => !unit.isDead);
+            }
+
+            if(target){
+                dealDamage(target, card.damage);
+                addLog(`敵人使用${card.name}，對${target.name}造成${card.damage}傷害`);
+            }else if(card.tags.includes("core")){
                 player.coreHp -= card.damage;
                 addLog(`敵人使用${card.name}，攻擊我方本體`);
             }
@@ -48,7 +58,7 @@ function enemyUseCard(index){
 
         if(card.tags.includes("shield")){
             owner.shield += card.shield;
-            addLog(`敵人使用${card.name}，${owner.name}獲得護盾`);
+            addLog(`敵人使用${card.name}，${owner.name}獲得${card.shield}護盾`);
         }
     }
 
@@ -58,6 +68,7 @@ function enemyUseCard(index){
 
         if(card.damage){
             owner.atk += card.damage;
+            addLog(`${owner.name}本次戰鬥攻擊增加${card.damage}`);
         }
 
         doCombat(enemy, player);

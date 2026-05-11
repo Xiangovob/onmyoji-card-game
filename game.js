@@ -1,4 +1,3 @@
-let selectedAlly = 0;
 let gameOver = false;
 
 let selectingCardIndex = null;
@@ -32,7 +31,7 @@ let player = createPlayer("玩家");
 let enemy = createPlayer("敵人");
 
 function buildDeck(who){
-    who.deck = [...cards, ...cards];
+    who.deck = [...cardData, ...cardData];
     shuffleDeck(who);
 }
 
@@ -77,7 +76,10 @@ function startGame(){
 }
 
 function startTurn(who){
+    addLog(`──── ${who.name}回合 ────`);
+
     returnCombat(who);
+    clearShield(who);
 
     who.energy = 3;
     who.attackChance = 1;
@@ -85,8 +87,6 @@ function startTurn(who){
     drawCard(who);
     reviveCharacters(who);
     triggerTurnStartPassives(who);
-
-    addLog(`${who.name}回合開始，出擊次數恢復為1`);
 }
 
 function returnCombat(who){
@@ -105,28 +105,23 @@ function triggerTurnStartPassives(who){
 }
 
 function triggerPassive(unit, triggerType, ownerSide, enemySide){
+    if(unit.isDead && triggerType !== "onDeath") return;
     if(!unit.passive) return;
 
     unit.passive.forEach(passive => {
         if(passive === "healOnTurnStart" && triggerType === "onTurnStart"){
-            if(!unit.isDead){
-                healTarget(unit, 1);
-                addLog(`${unit.name}被動觸發：回復1血`);
-            }
+            healTarget(unit, 1);
+            addLog(`${unit.name}被動觸發：回復1血`);
         }
 
         if(passive === "shieldOnTurnStart" && triggerType === "onTurnStart"){
-            if(!unit.isDead){
-                unit.shield += 1;
-                addLog(`${unit.name}被動觸發：獲得1護盾`);
-            }
+            unit.shield += 1;
+            addLog(`${unit.name}被動觸發：獲得1護盾`);
         }
 
         if(passive === "gainShieldOnHurt" && triggerType === "onHurt"){
-            if(!unit.isDead){
-                unit.shield += 1;
-                addLog(`${unit.name}被動觸發：受傷後獲得1護盾`);
-            }
+            unit.shield += 1;
+            addLog(`${unit.name}被動觸發：受傷後獲得1護盾`);
         }
 
         if(passive === "damageEnemyCoreOnDeath" && triggerType === "onDeath"){
@@ -134,17 +129,6 @@ function triggerPassive(unit, triggerType, ownerSide, enemySide){
             addLog(`${unit.name}死亡被動觸發：對${enemySide.name}本體造成2傷害`);
         }
     });
-}
-
-function selectAlly(index){
-    if(player.bench[index].isDead){
-        addLog("死亡角色不能選擇");
-        return;
-    }
-
-    selectedAlly = index;
-    addLog(`選擇角色：${player.bench[index].name}`);
-    render();
 }
 
 function enterCombat(index){
@@ -542,100 +526,14 @@ function checkWin(){
     }
 }
 
-function addLog(text){
-    let log = document.getElementById("battle-log");
-    log.innerHTML = text + "<br>" + log.innerHTML;
-}
+function clearShield(who){
+    who.bench.forEach(unit => {
+        unit.shield = 0;
+    });
 
-function render(){
-    document.getElementById("enemy-area").innerHTML =
-    `
-    <h2>敵方</h2>
-    <p onclick="selectTarget('enemy', 'core')">本體：${enemy.coreHp}</p>
-    <p>牌庫：${enemy.deck.length}　棄牌：${enemy.discardPile.length}</p>
-
-    <h3>戰鬥區</h3>
-    <div class="card battle-card" onclick="selectTarget('enemy', 'combat')">
-        ${
-            enemy.combat
-            ? `${enemy.combat.name}<br>HP:${enemy.combat.currentHp}/${enemy.combat.hp}<br>ATK:${enemy.combat.atk}<br>盾:${enemy.combat.shield}<br>被動:${enemy.combat.passiveName}`
-            : "空"
-        }
-    </div>
-
-    <h3>準備區</h3>
-    ${
-        enemy.bench.map((unit, index) => `
-            <div class="card ${unit.isDead ? "dead-card" : ""}" onclick="selectTarget('enemy', 'bench', ${index})">
-                ${unit.name}<br>
-                HP:${unit.currentHp}/${unit.hp}<br>
-                ATK:${unit.atk}<br>
-                盾:${unit.shield}<br>
-                被動:${unit.passiveName}<br>
-                ${unit.isDead ? `復活:${unit.reviveCounter}` : ""}
-            </div>
-        `).join("")
+    if(who.combat){
+        who.combat.shield = 0;
     }
-    `;
-
-    document.getElementById("player-area").innerHTML =
-    `
-    <h2>我方</h2>
-    <p>本體：${player.coreHp}</p>
-    <p>鬼火：${player.energy}</p>
-    <p>出擊次數：${player.attackChance}</p>
-    <p>牌庫：${player.deck.length}　棄牌：${player.discardPile.length}</p>
-
-    ${
-        selectingCard
-        ? `<p style="color:red;">正在選擇「${selectingCard.name}」的目標 
-           <button onclick="cancelTargetSelect()">取消</button></p>`
-        : ""
-    }
-
-    <h3>戰鬥區</h3>
-    <div class="card battle-card" onclick="selectTarget('player', 'combat')">
-        ${
-            player.combat
-            ? `${player.combat.name}<br>HP:${player.combat.currentHp}/${player.combat.hp}<br>ATK:${player.combat.atk}<br>盾:${player.combat.shield}<br>被動:${player.combat.passiveName}`
-            : "空"
-        }
-    </div>
-
-    <h3>準備區</h3>
-    ${
-        player.bench.map((unit, index) => `
-            <div class="bench-unit">
-                <div class="card ${unit.isDead ? "dead-card" : ""}" onclick="${selectingCard ? `selectTarget('player', 'bench', ${index})` : `selectAlly(${index})`}">
-                    ${unit.name}<br>
-                    HP:${unit.currentHp}/${unit.hp}<br>
-                    ATK:${unit.atk}<br>
-                    盾:${unit.shield}<br>
-                    被動:${unit.passiveName}<br>
-                    ${unit.isDead ? `復活:${unit.reviveCounter}` : ""}
-                </div>
-                <button onclick="enterCombat(${index})" ${unit.isDead ? "disabled" : ""}>
-                    出擊
-                </button>
-            </div>
-        `).join("")
-    }
-    `;
-
-    document.getElementById("hand-area").innerHTML =
-    `
-    <h2>手牌</h2>
-    ${
-        player.hand.map((card, index) => `
-            <button class="card" onclick="useCard(${index})">
-                ${card.name}<br>
-                費用:${card.cost}<br>
-                ${card.type}<br>
-                ${card.tags.join(" / ")}
-            </button>
-        `).join("")
-    }
-    `;
 }
 
 startGame();

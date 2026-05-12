@@ -103,19 +103,18 @@ function render(){
     `;
 
     // 我方牌庫資訊
-    document.getElementById("player-deck-info").innerHTML =
-    `
-        牌庫：${player.deck.length}張<br>
-        棄牌堆：${player.discardPile.length}張
-    `;
+    document.getElementById("enemy-status").innerHTML =
+`
+    <div class="status-title">敵方本體</div>
 
-    // 選目標提示
-    const selectingText = selectingCard
-        ? `<div class="selecting-message">
-            正在選擇「${selectingCard.name}」的目標
-            <button onclick="cancelTargetSelect()">取消</button>
-           </div>`
-        : "";
+    <div class="mini-info">
+        HP：${enemy.coreHp}<br><br>
+
+        Cost：${enemy.energy}<br><br>
+
+        出擊：${enemy.attackChance}
+    </div>
+`;
 
     // 手牌
     document.getElementById("hand-area").innerHTML =

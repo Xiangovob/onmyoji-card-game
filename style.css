@@ -20,10 +20,11 @@ body{
     height:100vh;
     display:grid;
     grid-template-columns:150px 1fr 230px;
-    grid-template-rows:1fr 180px;
+    grid-template-rows:1fr 170px;
     gap:8px;
     padding:8px;
     box-sizing:border-box;
+    overflow:hidden;
 }
 
 /* 左側固定欄 */
@@ -41,10 +42,9 @@ body{
 #center-panel{
     grid-column:2;
     grid-row:1;
-    overflow-y:auto;
-    overflow-x:hidden;
-    display:flex;
-    flex-direction:column;
+    overflow:hidden;
+    display:grid;
+    grid-template-rows:1fr 1fr;
     gap:8px;
 }
 
@@ -87,9 +87,15 @@ h1{
 /* 敵方區、我方區壓縮成上下各半 */
 #enemy-area,
 #player-area{
-    flex:none;
-    min-height:260px;
-    overflow:visible;
+    min-height:0;
+    height:100%;
+    overflow:hidden;
+}
+#enemy-area,
+#player-area{
+    display:grid;
+    grid-template-rows:auto 50px 1fr 110px;
+    gap:6px;
 }
 
 /* 戰鬥紀錄固定在右側 */
@@ -131,32 +137,24 @@ h1{
 }
 
 .info-zone{
-    background:rgba(0,0,0,0.25);
-    border:1px solid #555;
-    border-radius:10px;
-    padding:6px;
-    margin-bottom:6px;
+    padding:4px;
+    margin:0;
     font-size:13px;
+    line-height:1.4;
 }
 
 .bench-zone{
-    border:1px solid #555;
-    border-radius:10px;
     padding:6px;
-    margin:6px 0;
-    background:rgba(0,0,0,0.25);
-    white-space:nowrap;
+    margin:0;
     overflow-x:auto;
     overflow-y:hidden;
+    white-space:nowrap;
 }
 
 .combat-zone{
-    border:2px dashed #999;
-    background:rgba(255,255,255,0.08);
-    border-radius:12px;
-    padding:8px;
-    margin:6px auto;
-    min-height:110px;
+    padding:6px;
+    margin:0 auto;
+    min-height:80px;
     width:90%;
 }
 
@@ -182,20 +180,12 @@ h1{
 }
 
 .card{
-    display:inline-block;
-    border:1px solid white;
-    padding:8px;
-    margin:6px;
-    width:95px;
-    min-height:120px;
-    cursor:pointer;
-    background:#333;
-    word-break:break-word;
-    vertical-align:top;
+    width:85px;
+    min-height:95px;
+    padding:6px;
+    margin:4px;
     font-size:12px;
-    box-sizing:border-box;
 }
-
 .hand-card{
     display:inline-block;
     vertical-align:top;

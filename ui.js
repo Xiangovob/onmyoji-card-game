@@ -5,21 +5,22 @@ function addLog(text){
 
 function render(){
 
-    // 左側：敵方本體
+    // 敵方本體
     document.getElementById("enemy-status").innerHTML =
     `
         <h2>敵方本體</h2>
+        <p>HP：${enemy.coreHp}</p>
         <p>Cost：${enemy.energy ?? 3}</p>
         <p>出擊：${enemy.attackChance ?? 1}</p>
     `;
 
-    // 左側：我方本體
+    // 我方本體
     document.getElementById("player-status").innerHTML =
     `
         <h2>我方本體</h2>
+        <p>HP：${player.coreHp}</p>
         <p>Cost：${player.energy}</p>
         <p>出擊：${player.attackChance}</p>
-        <p>HP：${player.coreHp}</p>
     `;
 
     // 敵方準備區
@@ -48,7 +49,6 @@ function render(){
     // 敵方戰鬥區
     document.getElementById("enemy-combat").innerHTML =
     `
-        <h2>敵方戰鬥區</h2>
         <div class="card battle-card" onclick="selectTarget('enemy', 'combat')">
             ${
                 enemy.combat
@@ -63,7 +63,6 @@ function render(){
     // 我方戰鬥區
     document.getElementById("player-combat").innerHTML =
     `
-        <h2>我方戰鬥區</h2>
         <div class="card battle-card" onclick="selectTarget('player', 'combat')">
             ${
                 player.combat
@@ -103,18 +102,19 @@ function render(){
     `;
 
     // 我方牌庫資訊
-    document.getElementById("enemy-status").innerHTML =
-`
-    <div class="status-title">敵方本體</div>
+    document.getElementById("player-deck-info").innerHTML =
+    `
+        牌庫：${player.deck.length}張<br>
+        棄牌堆：${player.discardPile.length}張
+    `;
 
-    <div class="mini-info">
-        HP：${enemy.coreHp}<br><br>
-
-        Cost：${enemy.energy}<br><br>
-
-        出擊：${enemy.attackChance}
-    </div>
-`;
+    // 選目標提示
+    const selectingText = selectingCard
+        ? `<div class="selecting-message">
+            正在選擇「${selectingCard.name}」的目標
+            <button onclick="cancelTargetSelect()">取消</button>
+           </div>`
+        : "";
 
     // 手牌
     document.getElementById("hand-area").innerHTML =
@@ -125,14 +125,10 @@ function render(){
             ${
                 player.hand.map((card, index) => `
                     <button class="card hand-card ${card.type}" onclick="useCard(${index})">
-
                         <strong>${card.name}</strong><br>
-
                         費用：${card.cost}<br>
                         ${card.desc ? `<small>${card.desc}</small>` : ""}<br>
-
                         <span>${card.type}</span>
-
                     </button>
                 `).join("")
             }

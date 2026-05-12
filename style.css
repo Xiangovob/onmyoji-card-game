@@ -3,7 +3,6 @@ html, body{
     height:100%;
     margin:0;
     padding:0;
-    overflow:hidden;
 }
 
 body{
@@ -11,6 +10,8 @@ body{
     color:white;
     text-align:center;
     font-family:sans-serif;
+    overflow-y:auto;
+    overflow-x:hidden;
 }
 
 /* 整體固定版面 */

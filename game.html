@@ -8,44 +8,49 @@
 </head>
 <body>
 
-<div id="game">
+<div id="game" class="board-layout">
 
-    <!-- 左側固定資訊欄：之後可放敵方本體、能量、出擊次數、我方本體 -->
+    <!-- 左側：敵方本體 / 戰鬥紀錄 / 我方本體 -->
     <aside id="left-panel">
-    <div id="enemy-status" class="side-status"></div>
+        <div id="enemy-status" class="side-status"></div>
 
-    <div class="middle-status">
-        <div id="energy-status"></div>
-        <div id="attack-status"></div>
-    </div>
+        <div id="battle-log" class="area-box"></div>
 
-    <div id="player-status" class="side-status"></div>
-</aside>
+        <div id="player-status" class="side-status"></div>
+    </aside>
 
     <!-- 中央戰場 -->
     <main id="center-panel">
-        <!-- 敵方區 -->
-        <div id="enemy-area" class="area-box"></div>
 
-        <!-- 我方區 -->
-        <div id="player-area" class="area-box"></div>
+        <!-- 敵方準備區 + 牌庫資訊 -->
+        <section id="enemy-row" class="field-row">
+            <div id="enemy-bench" class="bench-line"></div>
+            <div id="enemy-deck-info" class="deck-info"></div>
+        </section>
+
+        <!-- 敵我戰鬥區 -->
+        <section id="combat-row">
+            <div id="enemy-combat" class="combat-box"></div>
+            <div id="player-combat" class="combat-box"></div>
+        </section>
+
+        <!-- 我方準備區 + 牌庫資訊 -->
+        <section id="player-row" class="field-row">
+            <div id="player-bench" class="bench-line"></div>
+            <div id="player-deck-info" class="deck-info"></div>
+        </section>
+
+        <!-- 手牌區 -->
+        <section id="hand-area"></section>
+
     </main>
 
-    <!-- 右側資訊欄 -->
+    <!-- 右側按鈕 -->
     <aside id="right-panel">
-        <!-- 操作按鈕 -->
-        <div class="control-area">
-            <button onclick="endTurn()">結束回合</button>
-        </div>
-
-        <!-- 戰鬥紀錄 -->
-        <div id="battle-log" class="area-box"></div>
+        <button>投降</button>
+        <div class="room-box">房號：1234</div>
+        <button onclick="endTurn()">結束回合</button>
     </aside>
-
-    <!-- 底部手牌區 -->
-    <footer id="hand-panel">
-        <div id="hand-area" class="area-box"></div>
-    </footer>
 
 </div>
 

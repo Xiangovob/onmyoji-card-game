@@ -449,3 +449,8 @@ body.menu-page{
 #player-combat{
     border-color:#5b8ac3;
 }
+
+#enemy-bench,
+#enemy-combat{
+    transform:translateY(-20px);
+}

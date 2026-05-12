@@ -42,10 +42,14 @@ body{
 #center-panel{
     grid-column:2;
     grid-row:1;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+
+    gap:14px;
+
     overflow:hidden;
-    display:grid;
-    grid-template-rows:1fr 1fr;
-    gap:8px;
 }
 
 /* 右側紀錄欄 */
@@ -90,12 +94,6 @@ h1{
     min-height:0;
     height:100%;
     overflow:hidden;
-}
-#enemy-area,
-#player-area{
-    display:grid;
-    grid-template-rows:auto 50px 1fr 110px;
-    gap:6px;
 }
 
 /* 戰鬥紀錄固定在右側 */
@@ -454,4 +452,54 @@ body.menu-page{
     background:#222;
     color:#777;
     cursor:not-allowed;
+}
+
+.field-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+
+    gap:20px;
+}
+
+.bench-line{
+    display:flex;
+    align-items:flex-end;
+    gap:16px;
+
+    flex:1;
+}
+
+.deck-info{
+    width:180px;
+
+    font-size:18px;
+    line-height:2;
+
+    text-align:left;
+}
+
+#combat-row{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    gap:40px;
+
+    flex:1;
+}
+
+.combat-box{
+    width:420px;
+    height:260px;
+
+    border:2px dashed #777;
+    border-radius:14px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    background:rgba(255,255,255,0.03);
 }

@@ -398,3 +398,26 @@ button{
     }
 
 }
+
+.menu-page{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    width:100vw;
+    height:100vh;
+}
+
+.menu-container{
+    text-align:center;
+}
+
+.menu-container h1{
+    font-size:48px;
+    margin-bottom:30px;
+}
+
+.menu-container button{
+    padding:15px 40px;
+    font-size:24px;
+    cursor:pointer;
+}

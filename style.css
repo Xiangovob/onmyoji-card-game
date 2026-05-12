@@ -8,237 +8,224 @@ html, body{
 body{
     background:#1b1b1b;
     color:white;
-    text-align:center;
     font-family:sans-serif;
-    overflow-y:auto;
-    overflow-x:hidden;
+    overflow:hidden;
 }
 
-/* 整體固定版面 */
-#game{
+/* =========================
+   遊戲主版面
+========================= */
+
+#game.board-layout{
     width:100vw;
     height:100vh;
     display:grid;
-    grid-template-columns:150px 1fr 230px;
-    grid-template-rows:1fr 170px;
-    gap:8px;
-    padding:8px;
+    grid-template-columns:220px 1fr 260px;
+    grid-template-rows:1fr;
+    gap:12px;
+    padding:12px;
     box-sizing:border-box;
+}
+
+/* 左側 */
+#left-panel{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
     overflow:hidden;
 }
 
-/* 左側固定欄 */
-#left-panel{
-    grid-column:1;
-    grid-row:1;
-
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
-
-    gap:14px;
-
-    background:rgba(0,0,0,0.35);
+.side-status{
     border:1px solid #6f6255;
     border-radius:10px;
-
-    padding:14px;
+    background:rgba(255,255,255,0.04);
+    padding:18px;
+    min-height:150px;
+    box-sizing:border-box;
 }
 
-/* 中央戰場 */
+.side-status h2{
+    font-size:28px;
+    margin:0 0 20px;
+}
+
+.side-status p{
+    font-size:20px;
+    margin:14px 0;
+}
+
+#battle-log{
+    flex:1;
+    border:1px solid #6f6255;
+    border-radius:10px;
+    background:rgba(0,0,0,0.35);
+    padding:12px;
+    overflow-y:auto;
+    font-size:14px;
+    line-height:1.6;
+    text-align:left;
+    box-sizing:border-box;
+}
+
+/* 中央 */
 #center-panel{
-    grid-column:2;
-    grid-row:1;
-
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
-
-    gap:14px;
-
+    display:grid;
+    grid-template-rows:160px 1fr 160px 170px;
+    gap:12px;
     overflow:hidden;
 }
 
-/* 右側紀錄欄 */
-#right-panel{
-    grid-column:3;
-    grid-row:1;
+.field-row{
+    display:grid;
+    grid-template-columns:1fr 190px;
+    gap:16px;
+    align-items:center;
+}
 
+.bench-line{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:18px;
+    height:100%;
+    overflow:hidden;
+}
+
+.bench-title{
+    writing-mode:vertical-rl;
+    font-size:22px;
+    font-weight:bold;
+    margin-right:10px;
+}
+
+.deck-info{
+    font-size:20px;
+    line-height:2;
+    text-align:left;
+}
+
+/* 中央戰鬥區 */
+#combat-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:36px;
+    align-items:center;
+}
+
+.combat-box{
+    height:100%;
+    border:2px dashed #777;
+    border-radius:14px;
+    background:rgba(255,255,255,0.03);
     display:flex;
     flex-direction:column;
     justify-content:center;
     align-items:center;
-
-    gap:30px;
-
-    background:rgba(0,0,0,0.35);
-    border:1px solid #6f6255;
-    border-radius:10px;
-
-    padding:20px;
-}
-
-/* 底部手牌 */
-#hand-panel{
-    grid-column:1 / 4;
-    grid-row:2;
-
-    overflow:hidden;
-
-    border:1px solid #6f6255;
-    border-radius:14px;
-
-    background:rgba(30,20,15,0.85);
-
-    padding:10px;
-}
-
-/* 標題縮小 */
-h1{
-    font-size:16px;
-    margin:6px 0 10px;
-}
-
-.room-system{
-    display:none;
-}
-
-.area-box{
-    border:1px solid #6f6255;
-    background:rgba(255,255,255,0.06);
-    border-radius:10px;
-    padding:8px;
-    margin:0;
     box-sizing:border-box;
 }
 
-/* 敵方區、我方區壓縮成上下各半 */
-#enemy-area,
-#player-area{
-    min-height:0;
-    height:100%;
-    overflow:hidden;
+.combat-box h2{
+    font-size:28px;
+    margin:0 0 24px;
 }
 
-/* 戰鬥紀錄固定在右側 */
-#battle-log{
-    flex:1;
-    border:1px solid gray;
-    background:rgba(0,0,0,0.35);
-    border-radius:10px;
-    padding:10px;
-    margin:0;
-    min-height:0;
-    max-height:none;
-    overflow-y:auto;
-    text-align:left;
-    font-size:13px;
+/* 右側 */
+#right-panel{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    gap:28px;
 }
 
-/* 結束回合按鈕 */
-.control-area{
-    background:rgba(0,0,0,0.35);
+#right-panel button,
+.room-box{
+    width:100%;
+    padding:18px;
+    font-size:22px;
+    box-sizing:border-box;
+}
+
+.room-box{
     border:1px solid #6f6255;
-    border-radius:10px;
-    padding:8px;
+    border-radius:8px;
+    text-align:center;
 }
 
+/* 手牌 */
 #hand-area{
-    height:100%;
-    min-height:0;
     overflow:hidden;
-}
-
-/* 區塊標題 */
-.zone-title{
-    font-size:15px;
-    font-weight:bold;
-    margin:4px 0 6px;
-    padding:4px;
-    border-bottom:1px solid #888;
-}
-
-.info-zone{
-    padding:4px;
-    margin:0;
-    font-size:13px;
-    line-height:1.4;
-}
-
-.bench-zone{
-    padding:6px;
-    margin:0;
-    overflow-x:auto;
-    overflow-y:hidden;
-    white-space:nowrap;
-}
-
-.combat-zone{
-    padding:6px;
-    margin:0 auto;
-    min-height:80px;
-    width:90%;
-}
-
-.enemy-combat-zone{
-    border-color:#9b5b5b;
-}
-
-.player-combat-zone{
-    border-color:#5b7d9b;
 }
 
 .hand-zone{
     height:100%;
-    border-top:3px solid #8b6f47;
-    background:rgba(30,20,15,0.75);
-    padding:8px;
-    margin:0;
-    border-radius:12px;
+    border:1px solid #6f6255;
+    border-radius:14px;
+    background:rgba(30,20,15,0.85);
+    padding:10px;
+    box-sizing:border-box;
     overflow-x:auto;
     overflow-y:hidden;
     white-space:nowrap;
-    box-sizing:border-box;
 }
 
+/* =========================
+   卡牌
+========================= */
+
 .card{
-    width:85px;
-    min-height:95px;
-    padding:6px;
-    margin:4px;
-    font-size:12px;
-}
-.hand-card{
-    display:inline-block;
+    display:inline-flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
     vertical-align:top;
-    width:105px;
-    min-width:105px;
-    min-height:130px;
+
+    width:110px;
+    min-width:110px;
+    height:130px;
+
+    padding:8px;
     margin:6px;
-    white-space:normal;
+
+    border:1px solid white;
+    background:#333;
+    color:white;
+
+    font-size:14px;
+    text-align:center;
+    word-break:break-word;
+    box-sizing:border-box;
+    cursor:pointer;
 }
 
 .battle-card{
+    width:120px;
+    height:140px;
     border:3px solid white;
     background:#444;
 }
 
 .bench-unit{
-    display:inline-block;
-    margin:4px;
-    vertical-align:top;
+    display:inline-flex;
+    flex-direction:column;
+    align-items:center;
+    gap:4px;
 }
 
 .bench-unit button{
-    display:block;
-    margin:4px auto;
-    padding:4px 8px;
-    font-size:12px;
+    padding:5px 10px;
+    font-size:13px;
 }
 
-button{
-    padding:8px 14px;
-    margin:4px;
+.hand-card{
+    width:120px;
+    min-width:120px;
+    height:150px;
+    margin:6px;
+    white-space:normal;
+}
+
+.hand-card small{
+    font-size:11px;
 }
 
 .dead-card{
@@ -255,9 +242,10 @@ button{
 .selecting-message{
     color:#ff7777;
     font-weight:bold;
+    text-align:center;
 }
 
-/* 法術牌：右上 + 左下切角 */
+/* 法術牌 */
 .hand-card.spell{
     background:#303030;
     color:white;
@@ -273,7 +261,7 @@ button{
     );
 }
 
-/* 戰鬥牌：左右上角切角 */
+/* 戰鬥牌 */
 .hand-card.combat{
     background:#eee8dc;
     color:#222;
@@ -289,46 +277,45 @@ button{
     );
 }
 
-/* 型態牌：上方圓弧 */
+/* 型態牌 */
 .hand-card.form{
     border-radius:70px 70px 10px 10px;
 }
 
 /* =========================
-   手機版 RWD
+   按鈕
 ========================= */
 
-@media (max-width: 768px){
+button{
+    cursor:pointer;
+    border:none;
+    border-radius:6px;
+    background:#eee;
+    color:#111;
+}
 
-    html,
+button:disabled{
+    opacity:0.5;
+    cursor:not-allowed;
+}
+
+/* =========================
+   手機版
+========================= */
+
+@media (max-width: 900px), (max-height: 500px){
+
     body{
-        height:auto;
         overflow-y:auto;
         overflow-x:hidden;
     }
 
-    #game{
+    #game.board-layout{
+        height:auto;
+        min-height:100vh;
         display:flex;
         flex-direction:column;
-
-        width:100%;
-        min-height:100vh;
-        height:auto;
-
-        overflow:visible;
-
-        padding:6px;
-        gap:6px;
-
-        box-sizing:border-box;
-    }
-
-    #left-panel,
-    #center-panel,
-    #right-panel,
-    #hand-panel{
-        width:100%;
-        box-sizing:border-box;
+        padding:8px;
     }
 
     #left-panel{
@@ -337,88 +324,48 @@ button{
 
     #center-panel{
         order:2;
+        display:flex;
+        flex-direction:column;
+        overflow:visible;
     }
 
     #right-panel{
         order:3;
     }
 
-    #hand-panel{
-        order:4;
+    .field-row{
+        display:flex;
+        flex-direction:column;
     }
 
-    /* 區域不要被硬壓高度 */
-
-    #enemy-area,
-    #player-area{
-        min-height:auto;
-        overflow:visible;
+    .bench-line{
+        justify-content:flex-start;
+        overflow-x:auto;
+        overflow-y:hidden;
+        width:100%;
     }
 
-    /* 戰鬥紀錄 */
-
-    #battle-log{
-        height:180px;
-        overflow-y:auto;
+    .bench-title{
+        writing-mode:horizontal-tb;
     }
 
-    /* 手牌 */
+    #combat-row{
+        display:flex;
+        flex-direction:column;
+        gap:12px;
+    }
 
-    #hand-panel{
-        overflow:visible;
+    .combat-box{
+        min-height:180px;
     }
 
     #hand-area{
-        overflow:visible;
-        height:auto;
+        min-height:170px;
     }
 
     .hand-zone{
-        overflow-x:auto;
-        overflow-y:hidden;
-
-        white-space:nowrap;
-
-        padding-bottom:12px;
+        height:170px;
     }
-
-    /* 卡片 */
-
-    .card{
-        width:90px;
-        min-height:120px;
-
-        font-size:11px;
-    }
-
-    .hand-card{
-        width:95px;
-        min-width:95px;
-        min-height:140px;
-    }
-
-    /* 標題 */
-
-    h1{
-        font-size:24px;
-    }
-
-    /* 戰鬥區縮小 */
-
-    .combat-zone{
-        min-height:120px;
-        padding:10px;
-    }
-
-    /* 準備區 */
-
-    .bench-zone{
-        overflow-x:auto;
-        overflow-y:hidden;
-
-        white-space:nowrap;
-    }
-
 }
 
 /* =========================
@@ -452,19 +399,13 @@ body.menu-page{
 
 .menu-container button{
     width:240px;
-
     padding:18px 24px;
-
     font-size:24px;
-
     border:none;
     border-radius:12px;
-
     background:#444;
     color:white;
-
     cursor:pointer;
-
     transition:0.2s;
 }
 
@@ -476,75 +417,4 @@ body.menu-page{
     background:#222;
     color:#777;
     cursor:not-allowed;
-}
-
-.field-row{
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-start;
-
-    gap:20px;
-}
-
-.bench-line{
-    display:flex;
-    align-items:flex-end;
-    gap:16px;
-
-    flex:1;
-}
-
-.deck-info{
-    width:180px;
-
-    font-size:18px;
-    line-height:2;
-
-    text-align:left;
-}
-
-#combat-row{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    gap:40px;
-
-    flex:1;
-}
-
-.combat-box{
-    width:420px;
-    height:260px;
-
-    border:2px dashed #777;
-    border-radius:14px;
-
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-
-    background:rgba(255,255,255,0.03);
-}
-
-.side-status{
-    border:1px solid #6f6255;
-    border-radius:10px;
-
-    padding:16px;
-
-    background:rgba(255,255,255,0.04);
-
-    font-size:18px;
-    line-height:1.8;
-}
-
-.room-box{
-    border:1px solid #6f6255;
-    border-radius:10px;
-
-    padding:18px 28px;
-
-    font-size:24px;
 }

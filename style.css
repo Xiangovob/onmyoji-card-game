@@ -70,8 +70,8 @@ body{
 /* 中央 */
 #center-panel{
     display:grid;
-    grid-template-rows:150px 1fr 150px 220px;
-    gap:10px;
+    grid-template-rows:130px 1fr 150px 220px;
+    gap:8px;
     overflow:hidden;
 }
 

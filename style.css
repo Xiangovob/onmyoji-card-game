@@ -31,11 +31,18 @@ body{
 #left-panel{
     grid-column:1;
     grid-row:1;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+
+    gap:14px;
+
     background:rgba(0,0,0,0.35);
     border:1px solid #6f6255;
     border-radius:10px;
-    padding:8px;
-    overflow:hidden;
+
+    padding:14px;
 }
 
 /* 中央戰場 */
@@ -56,17 +63,34 @@ body{
 #right-panel{
     grid-column:3;
     grid-row:1;
+
     display:flex;
     flex-direction:column;
-    gap:8px;
-    overflow:hidden;
+    justify-content:center;
+    align-items:center;
+
+    gap:30px;
+
+    background:rgba(0,0,0,0.35);
+    border:1px solid #6f6255;
+    border-radius:10px;
+
+    padding:20px;
 }
 
 /* 底部手牌 */
 #hand-panel{
     grid-column:1 / 4;
     grid-row:2;
+
     overflow:hidden;
+
+    border:1px solid #6f6255;
+    border-radius:14px;
+
+    background:rgba(30,20,15,0.85);
+
+    padding:10px;
 }
 
 /* 標題縮小 */
@@ -514,4 +538,13 @@ body.menu-page{
 
     font-size:18px;
     line-height:1.8;
+}
+
+.room-box{
+    border:1px solid #6f6255;
+    border-radius:10px;
+
+    padding:18px 28px;
+
+    font-size:24px;
 }

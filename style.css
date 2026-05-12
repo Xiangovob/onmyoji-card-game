@@ -79,7 +79,7 @@ body{
     display:grid;
     grid-template-columns:1fr 190px;
     gap:16px;
-    align-items:center;
+    align-items:start;
 }
 
 .bench-line{
@@ -453,4 +453,9 @@ body.menu-page{
 #enemy-bench,
 #enemy-combat{
     transform:translateY(-20px);
+}
+
+.bench-wrapper{
+    border-top:1px solid rgba(255,255,255,0.25);
+    padding-top:12px;
 }

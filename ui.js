@@ -4,15 +4,47 @@ function addLog(text){
 }
 
 function render(){
+
+    // 左側固定資訊欄
+    document.getElementById("enemy-status").innerHTML =
+    `
+        <div class="status-title">敵方本體</div>
+        <div class="core-hp" onclick="selectTarget('enemy', 'core')">
+            ${enemy.coreHp}
+        </div>
+        <div class="mini-info">
+            牌庫：${enemy.deck.length}<br>
+            棄牌：${enemy.discardPile.length}
+        </div>
+    `;
+
+    document.getElementById("energy-status").innerHTML =
+    `
+        <div class="energy-ball">${player.energy}/3</div>
+        <div class="status-label">鬼火</div>
+    `;
+
+    document.getElementById("attack-status").innerHTML =
+    `
+        <div class="attack-icon">${player.attackChance}</div>
+        <div class="status-label">出擊次數</div>
+    `;
+
+    document.getElementById("player-status").innerHTML =
+    `
+        <div class="status-title">我方本體</div>
+        <div class="core-hp">
+            ${player.coreHp}
+        </div>
+        <div class="mini-info">
+            牌庫：${player.deck.length}<br>
+            棄牌：${player.discardPile.length}
+        </div>
+    `;
+
+    // 敵方區：只留下準備區 + 戰鬥區
     document.getElementById("enemy-area").innerHTML =
     `
-    <h2 class="zone-title">敵方資訊</h2>
-
-    <div class="info-zone">
-        <p onclick="selectTarget('enemy', 'core')">本體：${enemy.coreHp}</p>
-        <p>牌庫：${enemy.deck.length}　棄牌：${enemy.discardPile.length}</p>
-    </div>
-
     <div class="bench-zone">
         <h3>敵方準備區</h3>
         ${
@@ -47,17 +79,9 @@ function render(){
     </div>
     `;
 
+    // 我方區：只留下選目標提示 + 戰鬥區 + 準備區
     document.getElementById("player-area").innerHTML =
     `
-    <h2 class="zone-title">我方資訊</h2>
-
-    <div class="info-zone">
-        <p>本體：${player.coreHp}</p>
-        <p>鬼火：${player.energy}</p>
-        <p>出擊次數：${player.attackChance}</p>
-        <p>牌庫：${player.deck.length}　棄牌：${player.discardPile.length}</p>
-    </div>
-
     ${
         selectingCard
         ? `<p class="selecting-message">
@@ -116,6 +140,7 @@ function render(){
     </div>
     `;
 
+    // 手牌區
     document.getElementById("hand-area").innerHTML =
     `
     <div class="hand-zone">

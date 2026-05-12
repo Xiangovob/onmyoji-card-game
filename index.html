@@ -8,38 +8,53 @@
 </head>
 <body>
 
-    <h1>百聞牌簡化版</h1>
+<div id="game">
 
-    <!-- 房間系統：暫時保留，之後做連線對戰再開 -->
-    <div class="room-system">
-    <input type="text" id="room-code" placeholder="輸入房號" disabled>
-    <button disabled>建立房間</button>
-    <button disabled>加入房間</button>
+    <!-- 左側固定資訊欄：之後可放敵方本體、能量、出擊次數、我方本體 -->
+    <aside id="left-panel">
+        <h1>百聞牌簡化版</h1>
+
+        <!-- 房間系統：暫時保留，之後做連線對戰再開 -->
+        <div class="room-system">
+            <input type="text" id="room-code" placeholder="輸入房號" disabled>
+            <button disabled>建立房間</button>
+            <button disabled>加入房間</button>
+        </div>
+    </aside>
+
+    <!-- 中央戰場 -->
+    <main id="center-panel">
+        <!-- 敵方區 -->
+        <div id="enemy-area" class="area-box"></div>
+
+        <!-- 我方區 -->
+        <div id="player-area" class="area-box"></div>
+    </main>
+
+    <!-- 右側資訊欄 -->
+    <aside id="right-panel">
+        <!-- 操作按鈕 -->
+        <div class="control-area">
+            <button onclick="endTurn()">結束回合</button>
+        </div>
+
+        <!-- 戰鬥紀錄 -->
+        <div id="battle-log" class="area-box"></div>
+    </aside>
+
+    <!-- 底部手牌區 -->
+    <footer id="hand-panel">
+        <div id="hand-area" class="area-box"></div>
+    </footer>
+
 </div>
 
-    <!-- 敵方區 -->
-    <div id="enemy-area" class="area-box"></div>
-
-    <!-- 戰鬥紀錄 -->
-    <div id="battle-log" class="area-box"></div>
-
-    <!-- 我方區 -->
-    <div id="player-area" class="area-box"></div>
-
-    <!-- 手牌區 -->
-    <div id="hand-area" class="area-box"></div>
-
-    <!-- 操作按鈕 -->
-    <div class="control-area">
-        <button onclick="endTurn()">結束回合</button>
-    </div>
-
-    <!-- 載入順序不能亂 -->
-    <script src="characters.js"></script>
-    <script src="cards.js"></script>
-    <script src="ui.js"></script>
-    <script src="game.js"></script>
-    <script src="ai.js"></script>
+<!-- 載入順序不能亂 -->
+<script src="characters.js"></script>
+<script src="cards.js"></script>
+<script src="ui.js"></script>
+<script src="game.js"></script>
+<script src="ai.js"></script>
 
 </body>
 </html>

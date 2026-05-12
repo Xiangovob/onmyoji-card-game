@@ -418,3 +418,11 @@ body.menu-page{
     color:#777;
     cursor:not-allowed;
 }
+
+#enemy-combat{
+    border-color:#c35b5b;
+}
+
+#player-combat{
+    border-color:#5b8ac3;
+}

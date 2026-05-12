@@ -27,16 +27,19 @@ function render(){
     document.getElementById("enemy-bench").innerHTML =
     `
         <div class="bench-title">準備區</div>
-        ${
-            enemy.bench.map((unit, index) => `
-                <div class="card ${unit.isDead ? "dead-card" : ""}"
-                    onclick="${!unit.isDead ? `selectTarget('enemy', 'bench', ${index})` : ""}">
-                    ${unit.name}<br>
-                    (${unit.atk} x ${unit.currentHp})<br>
-                    ${unit.isDead ? `復活:${unit.reviveCounter}` : ""}
-                </div>
-            `).join("")
-        }
+
+        <div class="bench-zone bench-wrapper">
+            ${
+                enemy.bench.map((unit, index) => `
+                    <div class="card ${unit.isDead ? "dead-card" : ""}"
+                        onclick="${!unit.isDead ? `selectTarget('enemy', 'bench', ${index})` : ""}">
+                        ${unit.name}<br>
+                        (${unit.atk} x ${unit.currentHp})<br>
+                        ${unit.isDead ? `復活:${unit.reviveCounter}` : ""}
+                    </div>
+                `).join("")
+            }
+        </div>
     `;
 
     // 敵方牌庫資訊
@@ -78,27 +81,30 @@ function render(){
     document.getElementById("player-bench").innerHTML =
     `
         <div class="bench-title">準備區</div>
-        ${
-            player.bench.map((unit, index) => `
-                <div class="bench-unit">
-                    <div class="card ${unit.isDead ? "dead-card" : ""}"
-                        onclick="${
-                            selectingCard && !unit.isDead
-                            ? `selectTarget('player', 'bench', ${index})`
-                            : ""
-                        }">
-                        ${unit.name}<br>
-                        (${unit.atk} x ${unit.currentHp})<br>
-                        ${unit.isDead ? `復活:${unit.reviveCounter}` : ""}
-                    </div>
 
-                    <button onclick="enterCombat(${index})"
-                        ${unit.isDead ? "disabled" : ""}>
-                        出擊
-                    </button>
-                </div>
-            `).join("")
-        }
+        <div class="bench-zone bench-wrapper">
+            ${
+                player.bench.map((unit, index) => `
+                    <div class="bench-unit">
+                        <div class="card ${unit.isDead ? "dead-card" : ""}"
+                            onclick="${
+                                selectingCard && !unit.isDead
+                                ? `selectTarget('player', 'bench', ${index})`
+                                : ""
+                            }">
+                            ${unit.name}<br>
+                            (${unit.atk} x ${unit.currentHp})<br>
+                            ${unit.isDead ? `復活:${unit.reviveCounter}` : ""}
+                        </div>
+
+                        <button onclick="enterCombat(${index})"
+                            ${unit.isDead ? "disabled" : ""}>
+                            出擊
+                        </button>
+                    </div>
+                `).join("")
+            }
+        </div>
     `;
 
     // 我方牌庫資訊

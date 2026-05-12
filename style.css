@@ -280,3 +280,130 @@ button{
 .hand-card.form{
     border-radius:70px 70px 10px 10px;
 }
+
+/* =========================
+   手機版 RWD
+========================= */
+
+@media (max-width: 768px){
+
+    html,
+    body{
+        height:auto;
+        overflow-y:auto;
+        overflow-x:hidden;
+    }
+
+    #game{
+        display:flex;
+        flex-direction:column;
+
+        width:100%;
+        min-height:100vh;
+        height:auto;
+
+        overflow:visible;
+
+        padding:6px;
+        gap:6px;
+
+        box-sizing:border-box;
+    }
+
+    #left-panel,
+    #center-panel,
+    #right-panel,
+    #hand-panel{
+        width:100%;
+        box-sizing:border-box;
+    }
+
+    #left-panel{
+        order:1;
+    }
+
+    #center-panel{
+        order:2;
+    }
+
+    #right-panel{
+        order:3;
+    }
+
+    #hand-panel{
+        order:4;
+    }
+
+    /* 區域不要被硬壓高度 */
+
+    #enemy-area,
+    #player-area{
+        min-height:auto;
+        overflow:visible;
+    }
+
+    /* 戰鬥紀錄 */
+
+    #battle-log{
+        height:180px;
+        overflow-y:auto;
+    }
+
+    /* 手牌 */
+
+    #hand-panel{
+        overflow:visible;
+    }
+
+    #hand-area{
+        overflow:visible;
+        height:auto;
+    }
+
+    .hand-zone{
+        overflow-x:auto;
+        overflow-y:hidden;
+
+        white-space:nowrap;
+
+        padding-bottom:12px;
+    }
+
+    /* 卡片 */
+
+    .card{
+        width:90px;
+        min-height:120px;
+
+        font-size:11px;
+    }
+
+    .hand-card{
+        width:95px;
+        min-width:95px;
+        min-height:140px;
+    }
+
+    /* 標題 */
+
+    h1{
+        font-size:24px;
+    }
+
+    /* 戰鬥區縮小 */
+
+    .combat-zone{
+        min-height:120px;
+        padding:10px;
+    }
+
+    /* 準備區 */
+
+    .bench-zone{
+        overflow-x:auto;
+        overflow-y:hidden;
+
+        white-space:nowrap;
+    }
+
+}

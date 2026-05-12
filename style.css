@@ -173,6 +173,8 @@ body{
 ========================= */
 
 .card{
+    position:relative;
+
     display:inline-flex;
     flex-direction:column;
     justify-content:center;
@@ -195,6 +197,8 @@ body{
     word-break:break-word;
     box-sizing:border-box;
     cursor:pointer;
+
+    overflow:hidden;
 }
 
 .battle-card{

@@ -12,15 +12,15 @@
 
     <!-- 左側固定資訊欄：之後可放敵方本體、能量、出擊次數、我方本體 -->
     <aside id="left-panel">
-        <h1>百聞牌簡化版</h1>
+    <div id="enemy-status" class="side-status"></div>
 
-        <!-- 房間系統：暫時保留，之後做連線對戰再開 -->
-        <div class="room-system">
-            <input type="text" id="room-code" placeholder="輸入房號" disabled>
-            <button disabled>建立房間</button>
-            <button disabled>加入房間</button>
-        </div>
-    </aside>
+    <div class="middle-status">
+        <div id="energy-status"></div>
+        <div id="attack-status"></div>
+    </div>
+
+    <div id="player-status" class="side-status"></div>
+</aside>
 
     <!-- 中央戰場 -->
     <main id="center-panel">

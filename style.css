@@ -19,15 +19,21 @@ body{
 #game.board-layout{
     width:100vw;
     height:100vh;
+
     display:grid;
     grid-template-columns:220px 1fr 260px;
     grid-template-rows:1fr;
+
     gap:12px;
     padding:12px;
+
     box-sizing:border-box;
 }
 
-/* 左側 */
+/* =========================
+   左側
+========================= */
+
 #left-panel{
     display:flex;
     flex-direction:column;
@@ -39,8 +45,10 @@ body{
     border:1px solid #6f6255;
     border-radius:10px;
     background:rgba(255,255,255,0.04);
+
     padding:18px;
     min-height:150px;
+
     box-sizing:border-box;
 }
 
@@ -56,47 +64,81 @@ body{
 
 #battle-log{
     flex:1;
+
     border:1px solid #6f6255;
     border-radius:10px;
+
     background:rgba(0,0,0,0.35);
+
     padding:12px;
+
     overflow-y:auto;
+
     font-size:14px;
     line-height:1.6;
     text-align:left;
+
     box-sizing:border-box;
 }
 
-/* 中央 */
+/* =========================
+   中央區
+========================= */
+
 #center-panel{
-    display:grid;
-    grid-template-rows:130px 1fr 150px 220px;
-    gap:8px;
-    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+
+    gap:20px;
+
+    flex:1;
 }
 
 .field-row{
     display:grid;
     grid-template-columns:1fr 190px;
+
     gap:16px;
     align-items:start;
+}
+
+/* =========================
+   準備區
+========================= */
+
+.bench-wrapper{
+    border-top:1px solid rgba(255,255,255,0.25);
+    padding-top:12px;
 }
 
 .bench-line{
     display:flex;
     justify-content:center;
     align-items:center;
+
     gap:18px;
+
     height:100%;
     overflow:hidden;
 }
 
 .bench-title{
     writing-mode:vertical-rl;
+
     font-size:22px;
     font-weight:bold;
+
     margin-right:10px;
 }
+
+#enemy-bench{
+    transform:translateY(-20px);
+}
+
+/* =========================
+   牌庫資訊
+========================= */
 
 .deck-info{
     font-size:20px;
@@ -104,67 +146,96 @@ body{
     text-align:left;
 }
 
-/* 中央戰鬥區 */
+/* =========================
+   中央戰鬥區
+========================= */
+
 #combat-row{
     display:grid;
     grid-template-columns:1fr 1fr;
+
     gap:36px;
-    align-items:center;
+
+    align-items:start;
 }
 
 .combat-box{
-    height:100%;
+    height:260px;
+
     border:2px dashed #777;
     border-radius:14px;
+
     background:rgba(255,255,255,0.03);
+
     display:flex;
     flex-direction:column;
     justify-content:center;
     align-items:center;
+
     box-sizing:border-box;
 }
 
-.combat-box h2{
-    font-size:28px;
-    margin:0 0 24px;
+#enemy-combat{
+    border-color:#c35b5b;
 }
 
-/* 右側 */
+#player-combat{
+    border-color:#5b8ac3;
+}
+
+/* =========================
+   右側
+========================= */
+
 #right-panel{
     display:flex;
     flex-direction:column;
     justify-content:center;
+
     gap:28px;
 }
 
 #right-panel button,
 .room-box{
     width:100%;
+
     padding:18px;
+
     font-size:22px;
+
     box-sizing:border-box;
 }
 
 .room-box{
     border:1px solid #6f6255;
     border-radius:8px;
+
     text-align:center;
 }
 
-/* 手牌 */
+/* =========================
+   手牌區
+========================= */
+
 #hand-area{
     overflow:hidden;
 }
 
 .hand-zone{
-    height:100%;
+    height:220px;
+
     border:1px solid #6f6255;
     border-radius:14px;
+
     background:rgba(30,20,15,0.85);
+
     padding:10px;
+
     box-sizing:border-box;
+
     overflow-x:auto;
     overflow-y:hidden;
+
     white-space:nowrap;
 }
 
@@ -189,13 +260,16 @@ body{
     margin:6px;
 
     border:1px solid white;
+
     background:#333;
     color:white;
 
     font-size:14px;
     text-align:center;
     word-break:break-word;
+
     box-sizing:border-box;
+
     cursor:pointer;
 
     overflow:hidden;
@@ -204,7 +278,9 @@ body{
 .battle-card{
     width:120px;
     height:140px;
+
     border:3px solid white;
+
     background:#444;
 }
 
@@ -212,6 +288,7 @@ body{
     display:inline-flex;
     flex-direction:column;
     align-items:center;
+
     gap:4px;
 }
 
@@ -220,11 +297,17 @@ body{
     font-size:13px;
 }
 
+/* =========================
+   手牌卡牌
+========================= */
+
 .hand-card{
     width:110px;
     min-width:110px;
     height:145px;
+
     margin:6px;
+
     white-space:normal;
 }
 
@@ -232,17 +315,26 @@ body{
     font-size:10px;
 }
 
+/* =========================
+   死亡角色
+========================= */
+
 .dead-card{
     position:relative;
+
     background:#1f1f1f;
     color:#777;
+
     opacity:0.45;
+
     filter:grayscale(100%);
+
     border:2px solid #777;
 }
 
 .dead-card::after{
     content:"氣絕";
+
     position:absolute;
     top:6px;
     right:6px;
@@ -262,16 +354,24 @@ body{
     text-decoration:line-through;
 }
 
+/* =========================
+   選目標提示
+========================= */
+
 .selecting-message{
     color:#ff7777;
     font-weight:bold;
     text-align:center;
 }
 
-/* 法術牌 */
+/* =========================
+   法術牌
+========================= */
+
 .hand-card.spell{
     background:#303030;
     color:white;
+
     border:2px solid #dddddd;
 
     clip-path:polygon(
@@ -284,10 +384,14 @@ body{
     );
 }
 
-/* 戰鬥牌 */
+/* =========================
+   戰鬥牌
+========================= */
+
 .hand-card.combat{
     background:#eee8dc;
     color:#222;
+
     border:3px solid #7a4b4b;
 
     clip-path:polygon(
@@ -300,7 +404,10 @@ body{
     );
 }
 
-/* 型態牌 */
+/* =========================
+   型態牌
+========================= */
+
 .hand-card.form{
     border-radius:70px 70px 10px 10px;
 }
@@ -311,8 +418,10 @@ body{
 
 button{
     cursor:pointer;
+
     border:none;
     border-radius:6px;
+
     background:#eee;
     color:#111;
 }
@@ -336,8 +445,10 @@ button:disabled{
     #game.board-layout{
         height:auto;
         min-height:100vh;
+
         display:flex;
         flex-direction:column;
+
         padding:8px;
     }
 
@@ -347,8 +458,10 @@ button:disabled{
 
     #center-panel{
         order:2;
+
         display:flex;
         flex-direction:column;
+
         overflow:visible;
     }
 
@@ -363,8 +476,10 @@ button:disabled{
 
     .bench-line{
         justify-content:flex-start;
+
         overflow-x:auto;
         overflow-y:hidden;
+
         width:100%;
     }
 
@@ -375,6 +490,7 @@ button:disabled{
     #combat-row{
         display:flex;
         flex-direction:column;
+
         gap:12px;
     }
 
@@ -412,6 +528,7 @@ body.menu-page{
     display:flex;
     flex-direction:column;
     align-items:center;
+
     gap:20px;
 }
 
@@ -422,13 +539,19 @@ body.menu-page{
 
 .menu-container button{
     width:240px;
+
     padding:18px 24px;
+
     font-size:24px;
+
     border:none;
     border-radius:12px;
+
     background:#444;
     color:white;
+
     cursor:pointer;
+
     transition:0.2s;
 }
 
@@ -439,23 +562,6 @@ body.menu-page{
 .menu-container button:disabled{
     background:#222;
     color:#777;
+
     cursor:not-allowed;
-}
-
-#enemy-combat{
-    border-color:#c35b5b;
-}
-
-#player-combat{
-    border-color:#5b8ac3;
-}
-
-#enemy-bench,
-#enemy-combat{
-    transform:translateY(-20px);
-}
-
-.bench-wrapper{
-    border-top:1px solid rgba(255,255,255,0.25);
-    padding-top:12px;
 }

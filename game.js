@@ -12,7 +12,8 @@ function createPlayer(name){
         hand: [],
         discardPile: [],
         energy: 3,
-        attackChance: 1,
+        instantChance: 1,
+        attackChance: 1, 
         maxHand: 8,
         combat: null,
         bench: characterData.map((char, index) => ({

@@ -1,18 +1,3 @@
-function triggerTurnStartPassives(who){
-
-    let enemySide = who === player ? enemy : player;
-
-    who.bench.forEach(unit => {
-
-        triggerPassive(
-            unit,
-            "onTurnStart",
-            who,
-            enemySide
-        );
-    });
-}
-
 function triggerPassive(unit, triggerType, ownerSide, enemySide){
 
     if(unit.isDead && triggerType !== "onDeath") return;

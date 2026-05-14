@@ -34,7 +34,7 @@ function render(){
                     <div class="card ${unit.isDead ? "dead-card" : ""}"
                         onclick="${!unit.isDead ? `selectTarget('enemy', 'bench', ${index})` : ""}">
                         ${unit.name}<br>
-                        (${unit.atk} x ${unit.currentHp})<br>
+                        (${getAtk(unit)} x ${unit.currentHp})<br>
                         ${unit.isDead ? `復活:${unit.reviveCounter}` : ""}
                     </div>
                 `).join("")
@@ -56,7 +56,7 @@ function render(){
             ${
                 enemy.combat
                 ? `${enemy.combat.name}<br>
-                   (${enemy.combat.atk} x ${enemy.combat.currentHp})<br>
+                   (${getAtk(enemy.combat)} x ${enemy.combat.currentHp})<br>
                    盾:${enemy.combat.shield}`
                 : "空"
             }
@@ -70,7 +70,7 @@ function render(){
             ${
                 player.combat
                 ? `${player.combat.name}<br>
-                   (${player.combat.atk} x ${player.combat.currentHp})<br>
+                   (${getAtk(player.combat)} x ${player.combat.currentHp})<br>
                    盾:${player.combat.shield}`
                 : "空"
             }
@@ -93,7 +93,7 @@ function render(){
                                 : ""
                             }">
                             ${unit.name}<br>
-                            (${unit.atk} x ${unit.currentHp})<br>
+                            (${getAtk(unit)} x ${unit.currentHp})<br>
                             ${unit.isDead ? `復活:${unit.reviveCounter}` : ""}
                         </div>
 
@@ -140,6 +140,8 @@ function render(){
             }
         </div>
     `;
+
+    // 手牌數
     document.getElementById("hand-count-text").innerText =
-`${player.hand.length}/${player.maxHand}`;
+    `${player.hand.length}/${player.maxHand}`;
 }

@@ -126,7 +126,18 @@ function useCard(index){
 
     if(card.type === "spell"){
         if(card.tags.includes("aoe")){
-            player.energy -= card.cost;
+            if(useInstant){
+
+                player.instantChance--;
+
+                addLog(
+                    `${card.name}使用瞬發，不消耗鬼火`
+                );
+
+            }else{
+
+                player.energy -= card.cost;
+            }
             useSpellCard(card, owner, { type: "aoe" });
             discardPlayerCard(index);
             afterPlayerAction();
@@ -142,7 +153,18 @@ function useCard(index){
         return;
     }
 
-    player.energy -= card.cost;
+    if(useInstant){
+
+        player.instantChance--;
+
+        addLog(
+            `${card.name}使用瞬發，不消耗鬼火`
+        );
+
+    }else{
+
+        player.energy -= card.cost;
+    }
 
     if(card.type === "combat"){
         useCombatCard(card, owner);

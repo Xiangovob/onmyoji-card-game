@@ -21,6 +21,22 @@ const cardData = [
         damage: 2,
         desc: "本次戰鬥攻擊力 +2。"
     },
+    {
+    name:"狐妖覺醒",
+
+    type:"form",
+
+    cost:1,
+
+    owner:"fox",
+
+    formData:{
+        atk:2,
+        hp:6
+    },
+
+    desc:"2/6"
+}
 
     // 守衛
     {

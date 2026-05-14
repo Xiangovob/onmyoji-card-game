@@ -55,6 +55,7 @@ function endTurn(){
 
     addLog("你的回合結束");
     clearTurnBuff(player);
+    player.savedEnergy = player.energy;
     enemyTurn();
 
     if(gameOver) return;

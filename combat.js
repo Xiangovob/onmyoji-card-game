@@ -115,3 +115,8 @@ function doCombat(attackerSide, defenderSide){
         defenderSide.combat.combatAtk = 0;
     }
 }
+
+function getHp(unit){
+
+    return unit.form?.hp ?? unit.hp;
+}

@@ -106,4 +106,12 @@ function doCombat(attackerSide, defenderSide){
             `${attacker.name}攻擊${defenderSide.name}本體，造成${getAtk(attacker)}傷害`
         );
     }
+    
+    if(attackerSide.combat){
+        attackerSide.combat.combatAtk = 0;
+    }
+
+    if(defenderSide.combat){
+        defenderSide.combat.combatAtk = 0;
+    }
 }

@@ -13,6 +13,7 @@ function createPlayer(name){
         discardPile: [],
         energy: 3,
         attackChance: 1,
+        maxHand: 8,
         combat: null,
         bench: characterData.map((char, index) => ({
             ...char,
@@ -57,7 +58,7 @@ function drawCard(who){
         addLog(`${who.name}重新洗牌`);
     }
 
-    if(who.hand.length < 5){
+    if(who.hand.length < who.maxHand){
         who.hand.push(who.deck.pop());
     }
 }

@@ -15,6 +15,7 @@ function killUnit(unit, who){
     unit.currentHp = 0;
     unit.shield = 0;
     unit.isDead = true;
+    unit.form = null;
     unit.reviveCounter = 3;
 
     let enemySide = who === player ? enemy : player;

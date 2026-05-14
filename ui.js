@@ -11,6 +11,7 @@ function render(){
         <h2>敵方本體</h2>
         <p>HP：${enemy.coreHp}</p>
         <p>Cost：${enemy.energy ?? 3}</p>
+        <p>瞬發：${player.instantChance}</p>
         <p>出擊：${enemy.attackChance ?? 1}</p>
     `;
 
@@ -20,6 +21,7 @@ function render(){
         <h2>我方本體</h2>
         <p>HP：${player.coreHp}</p>
         <p>Cost：${player.energy}</p>
+        <p>瞬發：${player.instantChance}</p>
         <p>出擊：${player.attackChance}</p>
     `;
 

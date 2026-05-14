@@ -59,20 +59,6 @@ function startGame(){
     addLog("遊戲開始！");
 }
 
-function startTurn(who){
-    addLog(`──── ${who.name}回合 ────`);
-
-    returnCombat(who);
-    clearShield(who);
-
-    who.energy = 3;
-    who.attackChance = 1;
-
-    drawCard(who);
-    reviveCharacters(who);
-    triggerTurnStartPassives(who);
-}
-
 function returnCombat(who){
     if(who.combat){
         addLog(`${who.combat.name}返回準備區`);

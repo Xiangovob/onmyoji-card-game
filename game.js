@@ -115,6 +115,14 @@ function useCard(index){
         addLog("對應角色死亡，不能使用此牌");
         return;
     }
+    
+    if(
+        !useInstant &&
+        player.energy < card.cost
+    ){
+        addLog("鬼火不足");
+        return;
+    }
 
     if(card.type === "spell"){
         if(card.tags.includes("aoe")){

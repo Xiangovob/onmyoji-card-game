@@ -12,33 +12,25 @@ const cardData = [
         desc: "對一名敵方式神造成 3 點傷害。"
     },
     {
-    id: "fox_shadow_attack",
-    owner: "fox",
-    name: "狐影突襲",
-    cost: 1,
-    type: "combat",
-    tags: ["damage"],
-    damage: 2,
-    desc: "本次戰鬥攻擊力 +2。"
-},
-{
-    name:"狐妖覺醒",
-
-    type:"form",
-
-    cost:1,
-
-    owner:"fox",
-
-    formData:{
-        atk:2,
-        hp:6
+        id: "fox_shadow_attack",
+        owner: "fox",
+        name: "狐影突襲",
+        cost: 1,
+        type: "combat",
+        tags: ["damage"],
+        damage: 2,
+        desc: "本次戰鬥攻擊力 +2。"
     },
-
-    desc:"2/6"
-},
-
-    desc:"2/6"
+    {
+        name:"狐妖覺醒",
+        type:"form",
+        cost:1,
+        owner:"fox",
+        formData:{
+            atk:2,
+            hp:6
+        },
+        desc:"2/6"
     },
 
     // 守衛

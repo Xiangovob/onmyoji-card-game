@@ -156,7 +156,7 @@ body{
 
 #combat-row{
     display:grid;
-    grid-template-columns:1fr 1fr;
+    grid-template-columns:0.8fr 0.8fr;
 
     gap:36px;
 

@@ -210,8 +210,13 @@ function useCard(index){
     }
 
     if(card.type === "form"){
-        addLog("型態牌尚未開放");
-    }
+
+    owner.form = card.formData;
+
+    addLog(
+        `${owner.name}進入型態：${card.name}`
+    );
+}
 
     discardPlayerCard(index);
     afterPlayerAction();

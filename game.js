@@ -59,21 +59,6 @@ function startGame(){
     addLog("遊戲開始！");
 }
 
-function returnCombat(who){
-    if(who.combat){
-        addLog(`${who.combat.name}返回準備區`);
-        who.combat = null;
-    }
-}
-
-function triggerTurnStartPassives(who){
-    let enemySide = who === player ? enemy : player;
-
-    who.bench.forEach(unit => {
-        triggerPassive(unit, "onTurnStart", who, enemySide);
-    });
-}
-
 function triggerPassive(unit, triggerType, ownerSide, enemySide){
     if(unit.isDead && triggerType !== "onDeath") return;
     if(!unit.passive) return;
@@ -412,23 +397,6 @@ function reviveCharacters(who){
     });
 }
 
-function endTurn(){
-    if(gameOver) return;
-
-    cancelTargetSelect();
-
-    addLog("你的回合結束");
-
-    enemyTurn();
-
-    if(gameOver) return;
-
-    startTurn(player);
-
-    render();
-    checkWin();
-}
-
 function surrender(){
     player.coreHp = 0;
     addLog("你選擇投降");
@@ -447,16 +415,6 @@ function checkWin(){
     if(enemy.coreHp <= 0){
         gameOver = true;
         alert("你贏了！");
-    }
-}
-
-function clearShield(who){
-    who.bench.forEach(unit => {
-        unit.shield = 0;
-    });
-
-    if(who.combat){
-        who.combat.shield = 0;
     }
 }
 

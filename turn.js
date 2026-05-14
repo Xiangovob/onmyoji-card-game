@@ -53,7 +53,7 @@ function endTurn(){
     cancelTargetSelect();
 
     addLog("你的回合結束");
-
+    clearTurnBuff(player);
     enemyTurn();
 
     if(gameOver) return;
@@ -71,5 +71,16 @@ function clearShield(who){
 
     if(who.combat){
         who.combat.shield = 0;
+    }
+}
+
+function clearTurnBuff(who){
+
+    who.bench.forEach(unit => {
+        unit.turnAtk = 0;
+    });
+
+    if(who.combat){
+        who.combat.turnAtk = 0;
     }
 }

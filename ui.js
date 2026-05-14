@@ -37,6 +37,7 @@ function render(){
 
                         攻:${getAtk(unit)}<br>
                         血:${unit.currentHp}/${getHp(unit)}<br>
+                        盾:${unit.shield}<br>
 
                         ${unit.isDead ? `復活:${unit.reviveCounter}` : ""}
                     </div>
@@ -111,6 +112,7 @@ function render(){
 
                             攻:${getAtk(unit)}<br>
                             血:${unit.currentHp}/${getHp(unit)}<br>
+                            盾:${unit.shield}<br>
 
                             ${unit.isDead ? `復活:${unit.reviveCounter}` : ""}
                         </div>

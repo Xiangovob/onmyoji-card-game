@@ -214,7 +214,7 @@ function useCombatCard(card, owner){
         `${owner.name}使用戰鬥牌：${card.name}並出戰`
     );
     if(card.damage){
-        owner.buffAtk += card.damage;
+        owner.combatAtk += card.damage;
         addLog(
             `${owner.name}攻擊增加${card.damage}`
         );

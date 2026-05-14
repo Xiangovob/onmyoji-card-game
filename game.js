@@ -137,11 +137,14 @@ function useCard(index){
 
     if(card.type === "form"){
 
-    owner.form = card.formData;
-
-    addLog(
-        `${owner.name}進入型態：${card.name}`
-    );
+        let oldHp = getHp(owner);
+        owner.form = card.formData;
+        let newHp = getHp(owner);
+        owner.currentHp += (newHp - oldHp);
+        addLog(
+            `${owner.name}進入型態：${card.name}`
+        );
+}
 }
 
     discardPlayerCard(index);

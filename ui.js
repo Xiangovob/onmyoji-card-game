@@ -34,7 +34,10 @@ function render(){
                     <div class="card ${unit.isDead ? "dead-card" : ""}"
                         onclick="${!unit.isDead ? `selectTarget('enemy', 'bench', ${index})` : ""}">
                         ${unit.name}<br>
-                        (${getAtk(unit)} x ${unit.currentHp})<br>
+
+                        攻:${getAtk(unit)}<br>
+                        血:${unit.currentHp}/${getHp(unit)}<br>
+
                         ${unit.isDead ? `復活:${unit.reviveCounter}` : ""}
                     </div>
                 `).join("")
@@ -55,9 +58,14 @@ function render(){
         <div class="card battle-card" onclick="selectTarget('enemy', 'combat')">
             ${
                 enemy.combat
-                ? `${enemy.combat.name}<br>
-                   (${getAtk(enemy.combat)} x ${enemy.combat.currentHp})<br>
-                   盾:${enemy.combat.shield}`
+                ? `
+                    ${enemy.combat.name}<br>
+
+                    攻:${getAtk(enemy.combat)}<br>
+                    血:${enemy.combat.currentHp}/${getHp(enemy.combat)}<br>
+
+                    盾:${enemy.combat.shield}
+                  `
                 : "空"
             }
         </div>
@@ -69,9 +77,14 @@ function render(){
         <div class="card battle-card" onclick="selectTarget('player', 'combat')">
             ${
                 player.combat
-                ? `${player.combat.name}<br>
-                   (${getAtk(player.combat)} x ${player.combat.currentHp})<br>
-                   盾:${player.combat.shield}`
+                ? `
+                    ${player.combat.name}<br>
+
+                    攻:${getAtk(player.combat)}<br>
+                    血:${player.combat.currentHp}/${getHp(player.combat)}<br>
+
+                    盾:${player.combat.shield}
+                  `
                 : "空"
             }
         </div>
@@ -86,14 +99,19 @@ function render(){
             ${
                 player.bench.map((unit, index) => `
                     <div class="bench-unit">
+
                         <div class="card ${unit.isDead ? "dead-card" : ""}"
                             onclick="${
                                 selectingCard && !unit.isDead
                                 ? `selectTarget('player', 'bench', ${index})`
                                 : ""
                             }">
+
                             ${unit.name}<br>
-                            (${getAtk(unit)} x ${unit.currentHp})<br>
+
+                            攻:${getAtk(unit)}<br>
+                            血:${unit.currentHp}/${getHp(unit)}<br>
+
                             ${unit.isDead ? `復活:${unit.reviveCounter}` : ""}
                         </div>
 
@@ -101,6 +119,7 @@ function render(){
                             ${unit.isDead ? "disabled" : ""}>
                             出擊
                         </button>
+
                     </div>
                 `).join("")
             }
@@ -116,10 +135,15 @@ function render(){
 
     // 選目標提示
     const selectingText = selectingCard
-        ? `<div class="selecting-message">
-            正在選擇「${selectingCard.name}」的目標
-            <button onclick="cancelTargetSelect()">取消</button>
-           </div>`
+        ? `
+            <div class="selecting-message">
+                正在選擇「${selectingCard.name}」的目標
+
+                <button onclick="cancelTargetSelect()">
+                    取消
+                </button>
+            </div>
+          `
         : "";
 
     // 手牌
@@ -130,12 +154,23 @@ function render(){
         <div class="hand-zone">
             ${
                 player.hand.map((card, index) => `
-                    <button class="card hand-card ${card.type}" onclick="useCard(${index})">
+
+                    <button class="card hand-card ${card.type}"
+                        onclick="useCard(${index})">
+
                         <strong>${card.name}</strong><br>
+
                         費用：${card.cost}<br>
-                        ${card.desc ? `<small>${card.desc}</small>` : ""}<br>
+
+                        ${card.desc
+                            ? `<small>${card.desc}</small>`
+                            : ""
+                        }<br>
+
                         <span>${card.type}</span>
+
                     </button>
+
                 `).join("")
             }
         </div>

@@ -569,3 +569,29 @@ body.menu-page{
 
     cursor:not-allowed;
 }
+
+.hand-count-box{
+    border:1px solid #6f6255;
+    border-radius:12px;
+
+    background:rgba(255,255,255,0.03);
+
+    padding:14px;
+
+    text-align:center;
+
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+
+    color:white;
+
+    font-size:20px;
+}
+
+#hand-count-text{
+    font-size:28px;
+    font-weight:bold;
+
+    color:#d8c6a0;
+}

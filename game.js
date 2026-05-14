@@ -95,12 +95,16 @@ function useCard(index){
 
     let card = player.hand[index];
 
-    if(player.energy < card.cost){
-        addLog("鬼火不足");
-        return;
-    }
-
     let owner = player.bench.find(c => c.id === card.owner);
+    let useInstant = false;
+
+    if(
+        card.tags &&
+        card.tags.includes("instant") &&
+        player.instantChance > 0
+    ){
+        useInstant = true;
+    }
 
     if(!owner){
         addLog("找不到對應角色");

@@ -36,7 +36,7 @@ const cardData = [
     },
 
     desc:"2/6"
-}
+    },
 
     // 守衛
     {

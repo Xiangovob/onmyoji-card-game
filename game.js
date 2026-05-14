@@ -136,7 +136,6 @@ function useCard(index){
     }
 
     if(card.type === "form"){
-
         let oldHp = getHp(owner);
         owner.form = card.formData;
         let newHp = getHp(owner);
@@ -144,8 +143,7 @@ function useCard(index){
         addLog(
             `${owner.name}進入型態：${card.name}`
         );
-}
-}
+    }
 
     discardPlayerCard(index);
     afterPlayerAction();

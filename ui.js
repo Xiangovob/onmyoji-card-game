@@ -8,7 +8,7 @@ function render(){
     // 敵方本體
     document.getElementById("enemy-status").innerHTML =
     `
-        <h2>敵方本體</h2>
+        
         <p>HP：${enemy.coreHp}</p>
         <p>Cost：${enemy.energy ?? 3}</p>
         <p>瞬發：${player.instantChance}</p>
@@ -18,7 +18,7 @@ function render(){
     // 我方本體
     document.getElementById("player-status").innerHTML =
     `
-        <h2>我方本體</h2>
+        
         <p>HP：${player.coreHp}</p>
         <p>Cost：${player.energy}</p>
         <p>瞬發：${player.instantChance}</p>

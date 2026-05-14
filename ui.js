@@ -140,4 +140,6 @@ function render(){
             }
         </div>
     `;
+    document.getElementById("hand-count-text").innerText =
+`${player.hand.length}/8`;
 }

@@ -7,7 +7,7 @@ const cardData = [
         name: "狐火",
         cost: 1,
         type: "spell",
-        tags: ["damage"],
+        tags: ["damage", "instant"],
         damage: 3,
         desc: "對一名敵方式神造成 3 點傷害。"
     },

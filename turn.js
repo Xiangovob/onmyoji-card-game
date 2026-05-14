@@ -25,6 +25,7 @@ function startTurn(who){
     clearShield(who);
 
     who.energy = 3;
+    who.instantChance = 1;
     who.attackChance = 1;
 
     drawCard(who);

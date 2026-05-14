@@ -384,15 +384,12 @@ function useCombatCard(card, owner){
     addLog(`${owner.name}使用戰鬥牌：${card.name}並出戰`);
 
     if(card.damage){
-        owner.atk += card.damage;
+        owner.buffAtk += card.damage;
         addLog(`${owner.name}本次戰鬥攻擊增加${card.damage}`);
     }
 
     doCombat(player, enemy);
 
-    if(card.damage){
-        owner.atk -= card.damage;
-    }
 }
 
 function checkDeaths(who){

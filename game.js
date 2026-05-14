@@ -46,26 +46,6 @@ function shuffleDeck(who){
     }
 }
 
-function drawCard(who){
-    if(who.deck.length <= 0){
-        if(who.discardPile.length <= 0){
-            who.coreHp = 0;
-            addLog(`${who.name}牌庫耗盡，判敗`);
-            checkWin();
-            return;
-        }
-
-        who.deck = [...who.discardPile];
-        who.discardPile = [];
-        shuffleDeck(who);
-        addLog(`${who.name}重新洗牌`);
-    }
-
-    if(who.hand.length < who.maxHand){
-        who.hand.push(who.deck.pop());
-    }
-}
-
 function startGame(){
     buildDeck(player);
     buildDeck(enemy);

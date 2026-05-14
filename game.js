@@ -12,6 +12,7 @@ function createPlayer(name){
         hand: [],
         discardPile: [],
         energy: 3,
+        savedEnergy: 0,
         instantChance: 1,
         attackChance: 1, 
         maxHand: 8,

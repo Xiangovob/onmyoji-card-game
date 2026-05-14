@@ -1,17 +1,16 @@
 function getAtk(unit){
 
-    let baseAtk =
-        unit.form
-        ? unit.form.atk
-        : unit.atk;
+    let atk =
+        unit.form?.atk ?? unit.atk;
 
-    return (
-        baseAtk +
-        unit.buffAtk -
-        unit.debuffAtk
-    );
+    atk += unit.permanentAtk;
+    atk += unit.turnAtk;
+    atk += unit.combatAtk;
+
+    atk -= unit.debuffAtk;
+
+    return atk;
 }
-
 function dealDamage(unit, damage){
 
     if(unit.shield > 0){

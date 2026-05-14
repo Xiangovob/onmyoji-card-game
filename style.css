@@ -113,8 +113,7 @@ body{
 ========================= */
 
 .bench-wrapper{
-    border-top:1px solid rgba(255,255,255,0.25);
-    padding-top:12px;
+    padding-top:8px;
 }
 
 .bench-line{
@@ -165,18 +164,18 @@ body{
 }
 
 .combat-box{
-    height:160px;
+    height:120px;
 
-    border:2px dashed #777;
-    border-radius:14px;
+    border:2px dashed #666;
+    border-radius:20px;
 
-    background:rgba(255,255,255,0.03);
+    background:rgba(255,255,255,0.02);
 
     display:flex;
     justify-content:center;
     align-items:center;
 
-    box-sizing:border-box;
+    position:relative;
 }
 
 #enemy-combat{
@@ -280,12 +279,12 @@ body{
 }
 
 .battle-card{
-    width:100px;
-    height:130px;
-
-    border:3px solid white;
+    width:90px;
+    height:120px;
 
     background:#444;
+
+    border:2px solid #ddd;
 }
 .bench-unit{
     display:inline-flex;

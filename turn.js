@@ -1,16 +1,10 @@
 function drawCard(who){
     if(who.deck.length <= 0){
-        if(who.discardPile.length <= 0){
-            who.coreHp = 0;
-            addLog(`${who.name}牌庫耗盡，判敗`);
-            checkWin();
-            return;
-        }
-
-        who.deck = [...who.discardPile];
-        who.discardPile = [];
-        shuffleDeck(who);
-        addLog(`${who.name}重新洗牌`);
+        addLog(`${who.name}抽到了「終焉」`);
+        addLog(`${who.name}牌庫已耗盡`);
+        who.coreHp = 0;
+        checkWin();
+        return;
     }
 
     if(who.hand.length < who.maxHand){

@@ -82,17 +82,18 @@ function doCombat(attackerSide, defenderSide){
 
     // 雙方交戰
     if(defender && !defender.isDead){
-
-        dealDamage(
-            defender,
-            getAtk(attacker)
-        );
-
-        dealDamage(
-            attacker,
-            getAtk(defender)
-        );
-
+        if(!defender.immuneCombat){
+            dealDamage(
+                defender,
+                getAtk(attacker)
+            );
+        }
+        if(!attacker.immuneCombat){
+            dealDamage(
+                attacker,
+                getAtk(defender)
+            );
+        }
         addLog(
             `${attacker.name}與${defender.name}交戰`
         );

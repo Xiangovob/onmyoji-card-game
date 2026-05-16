@@ -257,6 +257,18 @@ function useCombatCard(card, owner){
             `${owner.name}攻擊增加${card.damage}`
         );
     }
+    if(card.shield){
+        owner.shield += card.shield;
+        addLog(
+            `${owner.name}獲得${card.shield}護盾`
+        );
+    }
+    if(card.immuneCombat){
+        owner.immuneCombat = true;
+        addLog(
+            `${owner.name}免疫本次戰鬥傷害`
+        );
+    }
     doCombat(player, enemy);
 }
 

@@ -99,7 +99,7 @@ const cardData = [
         owner: "katana",
         type: "combat",
         cost: 1,
-        combatAtk: 1,
+        damage: 1,
         immuneCombat: true,
         text: "本次戰鬥+1攻擊，免疫本次戰鬥傷害。"
     },

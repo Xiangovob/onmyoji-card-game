@@ -30,6 +30,8 @@ function dealDamage(unit, damage){
         if(unit.currentHp < 0){
             unit.currentHp = 0;
         }
+        // 觸發響應
+        triggerResponse("onLowHp", unit);
 
         let ownerSide =
             player.bench.includes(unit)

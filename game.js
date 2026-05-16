@@ -205,7 +205,7 @@ function afterPlayerAction(){
     checkDeaths(enemy);
     checkWin();
     render();
-
+}
 function useCombatCard(card, owner){
     player.combat = owner;
     addLog(

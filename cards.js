@@ -90,9 +90,8 @@ const cardData = [
         owner: "katana",
         type: "combat",
         cost: 1,
-        combatAtk: 0,
         shield: 1,
-        effect: "drawOnKill",
+        drawOnKill: true,
         text: "本次戰鬥+1護盾。消滅敵方角色時，抽一張牌。"
     },
     {

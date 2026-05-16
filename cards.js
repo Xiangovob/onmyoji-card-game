@@ -88,13 +88,11 @@ const cardData = [
         type:"spell",
         owner:"priest",
         cost:1,
-        tags:["response"],
+        heal:3,
+        tags:["heal","response"],
         trigger:"onLowHp",
         condition:(unit)=>{
             return unit.currentHp <= 2;
-        },
-        effect:{
-            heal:3
         }
     },
 

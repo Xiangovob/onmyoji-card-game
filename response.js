@@ -23,7 +23,14 @@ function triggerResponse(event, target){
         player.energy -= card.cost;
 
         // 使用效果
-        useSpellCard(card, target);
+        useSpellCard(
+            card,
+            unit,
+            {
+                target: unit,
+                targetType: "unit"
+            }
+        );
 
         // 移除手牌
         player.hand.splice(index, 1);

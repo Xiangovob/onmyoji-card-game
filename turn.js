@@ -1,12 +1,20 @@
 function drawCard(who){
+    // 抽到終焉
     if(who.deck.length <= 0){
-        addLog(`${who.name}抽到了「終焉」`);
         addLog(`${who.name}牌庫已耗盡`);
-        who.coreHp = 0;
-        checkWin();
+        addLog(`${who.name}抽到了「終焉」`);
+        gameOver = true;
+        // 敵人抽到
+        if(who === enemy){
+            alert("你贏了！");
+        }
+        // 玩家抽到
+        else{
+            alert("你輸了！");
+        }
         return;
     }
-
+    // 正常抽牌
     if(who.hand.length < who.maxHand){
         who.hand.push(who.deck.pop());
     }

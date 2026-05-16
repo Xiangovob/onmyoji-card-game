@@ -66,26 +66,20 @@ function startGame(){
 
 function enterCombat(index){
     if(gameOver) return;
-
     let unit = player.bench[index];
-
     if(unit.isDead){
         addLog("死亡角色不能出戰");
         return;
     }
-
     if(player.attackChance <= 0){
         addLog("本回合已經沒有出擊次數");
         return;
     }
 
     player.attackChance--;
-
     player.combat = unit;
     addLog(`${unit.name}消耗1次出擊次數並出戰`);
-
     doCombat(player, enemy);
-
     checkDeaths(player);
     checkDeaths(enemy);
     checkWin();
@@ -94,12 +88,9 @@ function enterCombat(index){
 
 function useCard(index){
     if(gameOver) return;
-
     let card = player.hand[index];
-
     let owner = player.bench.find(c => c.id === card.owner);
     let useInstant = false;
-
     if(
         card.tags &&
         card.tags.includes("instant") &&
@@ -107,17 +98,14 @@ function useCard(index){
     ){
         useInstant = true;
     }
-
     if(!owner){
         addLog("找不到對應角色");
         return;
     }
-
     if(owner.isDead){
         addLog("對應角色死亡，不能使用此牌");
         return;
     }
-    
     if(
         !useInstant &&
         player.energy < card.cost
@@ -125,19 +113,14 @@ function useCard(index){
         addLog("鬼火不足");
         return;
     }
-
     if(card.type === "spell"){
         if(card.tags.includes("aoe")){
             if(useInstant){
-
                 player.instantChance--;
-
                 addLog(
                     `${card.name}使用瞬發，不消耗鬼火`
                 );
-
             }else{
-
                 player.energy -= card.cost;
             }
             useSpellCard(card, owner, { type: "aoe" });
@@ -145,33 +128,25 @@ function useCard(index){
             afterPlayerAction();
             return;
         }
-
         selectingCardIndex = index;
         selectingCard = card;
         selectingOwner = owner;
-
         addLog(`請選擇「${card.name}」的目標`);
         render();
         return;
     }
 
     if(useInstant){
-
         player.instantChance--;
-
         addLog(
             `${card.name}使用瞬發，不消耗鬼火`
         );
-
     }else{
-
         player.energy -= card.cost;
     }
-
     if(card.type === "combat"){
         useCombatCard(card, owner);
     }
-
     if(card.type === "form"){
         let oldHp = getHp(owner);
         owner.form = card.formData;
@@ -181,47 +156,36 @@ function useCard(index){
             `${owner.name}進入型態：${card.name}`
         );
     }
-
     discardPlayerCard(index);
     afterPlayerAction();
 }
 
 function selectTarget(sideName, targetType, index = null){
     if(!selectingCard) return;
-
     let side = sideName === "player" ? player : enemy;
     let target = null;
-
     if(targetType === "combat"){
         target = side.combat;
     }
-
     if(targetType === "bench"){
         target = side.bench[index];
     }
-
     if(targetType === "core"){
         target = side;
     }
-
     if(!isValidSpellTarget(selectingCard, sideName, targetType, target)){
         return;
     }
-
     player.energy -= selectingCard.cost;
-
     useSpellCard(selectingCard, selectingOwner, {
         sideName,
         targetType,
         target
     });
-
     discardPlayerCard(selectingCardIndex);
-
     selectingCardIndex = null;
     selectingCard = null;
     selectingOwner = null;
-
     afterPlayerAction();
 }
 
@@ -229,22 +193,18 @@ function cancelTargetSelect(){
     selectingCardIndex = null;
     selectingCard = null;
     selectingOwner = null;
-
     addLog("取消選擇目標");
     render();
 }
-
 function discardPlayerCard(index){
     let usedCard = player.hand.splice(index, 1)[0];
     player.discardPile.push(usedCard);
 }
-
 function afterPlayerAction(){
     checkDeaths(player);
     checkDeaths(enemy);
     checkWin();
     render();
-}
 
 function useCombatCard(card, owner){
     player.combat = owner;
@@ -271,7 +231,6 @@ function useCombatCard(card, owner){
     }
     doCombat(player, enemy);
 }
-
 function surrender(){
     let yes = confirm("確定要投降嗎？");
     // 按取消
@@ -284,15 +243,12 @@ function surrender(){
         window.location.href = "index.html";
     }, 800);
 }
-
 function checkWin(){
     if(gameOver) return;
-
     if(player.coreHp <= 0){
         gameOver = true;
         alert("你輸了！");
     }
-
     if(enemy.coreHp <= 0){
         gameOver = true;
         alert("你贏了！");
@@ -300,22 +256,15 @@ function checkWin(){
 }
 
 function surrender(){
-
     let yes = confirm("確定要投降嗎？");
-
     // 取消
     if(!yes){
         return;
     }
-
     addLog("玩家選擇投降");
-
     gameOver = true;
-
     setTimeout(()=>{
-
         window.location.href = "index.html";
-
     }, 800);
 }
 startGame();

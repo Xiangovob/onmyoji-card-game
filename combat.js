@@ -112,10 +112,11 @@ function doCombat(attackerSide, defenderSide){
     
     if(attackerSide.combat){
         attackerSide.combat.combatAtk = 0;
+        attackerSide.combat.immuneCombat = false;
     }
-
     if(defenderSide.combat){
         defenderSide.combat.combatAtk = 0;
+        defenderSide.combat.immuneCombat = false;
     }
 }
 

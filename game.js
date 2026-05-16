@@ -286,4 +286,23 @@ function checkWin(){
     }
 }
 
+function surrender(){
+
+    let yes = confirm("確定要投降嗎？");
+
+    // 取消
+    if(!yes){
+        return;
+    }
+
+    addLog("玩家選擇投降");
+
+    gameOver = true;
+
+    setTimeout(()=>{
+
+        window.location.href = "index.html";
+
+    }, 800);
+}
 startGame();

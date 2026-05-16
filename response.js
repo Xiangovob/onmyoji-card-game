@@ -23,14 +23,25 @@ function triggerResponse(event, target){
         player.energy -= card.cost;
 
         // 使用效果
-        useSpellCard(
-            card,
-            unit,
-            {
-                target: unit,
-                targetType: "unit"
-            }
-        );
+        // heal
+        if(card.tags.includes("heal")){
+
+            healTarget(unit, card.heal);
+
+            addLog(
+                `${unit.name}因${card.name}恢復${card.heal}生命`
+            );
+        }
+
+        // shield
+        if(card.tags.includes("shield")){
+
+            unit.shield += card.shield;
+
+            addLog(
+                `${unit.name}因${card.name}獲得${card.shield}護盾`
+            );
+        }
 
         // 移除手牌
         player.hand.splice(index, 1);

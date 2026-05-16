@@ -85,21 +85,14 @@ const cardData = [
     },
     {
         name:"緊急治療",
-
         type:"spell",
-
         owner:"priest",
-
         cost:1,
-
         tags:["response"],
-
         trigger:"onLowHp",
-
         condition:(unit)=>{
             return unit.currentHp <= 2;
         },
-
         effect:{
             heal:3
         }

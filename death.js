@@ -15,6 +15,20 @@ function killUnit(unit, who){
     unit.currentHp = 0;
     unit.shield = 0;
     unit.isDead = true;
+    let killer =
+    player.combat === unit
+    ? enemy.combat
+    : player.combat;
+    if(killer && killer.drawOnKill){
+        let ownerSide =
+            player.bench.includes(killer)
+            ? player
+            : enemy;
+        drawCard(ownerSide);
+        addLog(
+            `${killer.name}擊殺敵人並抽1張牌`
+        );
+    }
     unit.form = null;
     unit.reviveCounter = 3;
 

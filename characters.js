@@ -24,11 +24,11 @@ const characterData = [
         passive: ["shieldOnTurnStart"]
     },
     {
-        id: "assassin",
-        name: "刺客",
+        id: "katana",
+        name: "妖刀",
+        atk: 3,
         hp: 4,
-        atk: 4,
-        passiveName: "死亡爆核",
-        passive: ["damageEnemyCoreOnDeath"]
+        passive: ["damageEnemyCoreOnDeath"],
+        passiveName: "死亡時對敵方本體造成2點傷害"
     }
 ];

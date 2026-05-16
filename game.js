@@ -212,6 +212,7 @@ function useCombatCard(card, owner){
     addLog(
         `${owner.name}使用戰鬥牌：${card.name}並出戰`
     );
+    applyCombatEffects(card, owner);
     doCombat(player, enemy);
 }
 function surrender(){

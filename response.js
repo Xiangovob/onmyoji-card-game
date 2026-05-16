@@ -25,9 +25,7 @@ function triggerResponse(event, target){
         // 使用效果
         // heal
         if(card.tags.includes("heal")){
-
             healTarget(unit, card.heal);
-
             addLog(
                 `${unit.name}因${card.name}恢復${card.heal}生命`
             );
@@ -35,9 +33,7 @@ function triggerResponse(event, target){
 
         // shield
         if(card.tags.includes("shield")){
-
             unit.shield += card.shield;
-
             addLog(
                 `${unit.name}因${card.name}獲得${card.shield}護盾`
             );

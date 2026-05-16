@@ -83,18 +83,6 @@ const cardData = [
         shield: 2,
         desc: "使一名我方式神獲得 2 點護盾。"
     },
-    {
-        name:"緊急治療",
-        type:"spell",
-        owner:"priest",
-        cost:1,
-        heal:3,
-        tags:["heal","response"],
-        trigger:"onLowHp",
-        condition:(unit)=>{
-            return unit.currentHp <= 2;
-        }
-    },
 
     // 刺客
     {

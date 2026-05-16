@@ -30,7 +30,7 @@ function createPlayer(name){
             shield: 0,
             isDead: false,
             reviveCounter: 0,
-            position: index
+            position: index,
             immuneCombat: false
         }))
     };

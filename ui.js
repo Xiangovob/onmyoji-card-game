@@ -9,20 +9,20 @@ function render(){
     document.getElementById("enemy-status").innerHTML =
     `
         
-        <p>HP：${enemy.coreHp}</p>
-        <p>Cost：${enemy.energy ?? 3}</p>
-        <p>瞬發：${player.instantChance}</p>
-        <p>出擊：${enemy.attackChance ?? 1}</p>
+        <p>HP：${enemy.coreHp}/30</p>
+        <p>Cost：${enemy.energy ?? 3}/3</p>
+        <p>瞬發：${player.instantChance}/1</p>
+        <p>出擊：${enemy.attackChance ?? 1}/1</p>
     `;
 
     // 我方本體
     document.getElementById("player-status").innerHTML =
     `
         
-        <p>HP：${player.coreHp}</p>
-        <p>Cost：${player.energy}</p>
-        <p>瞬發：${player.instantChance}</p>
-        <p>出擊：${player.attackChance}</p>
+        <p>HP：${player.coreHp}/30</p>
+        <p>Cost：${player.energy}/3</p>
+        <p>瞬發：${player.instantChance}/1</p>
+        <p>出擊：${player.attackChance}/1</p>
     `;
 
     // 敵方準備區

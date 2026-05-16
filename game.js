@@ -230,6 +230,12 @@ function useCombatCard(card, owner){
             `${owner.name}免疫本次戰鬥傷害`
         );
     }
+    if(card.drawOnKill){
+        owner.drawOnKill = true;
+        addLog(
+            `${owner.name}本次戰鬥擊殺敵人時將抽1張牌`
+        );
+    }
     doCombat(player, enemy);
 }
 function surrender(){

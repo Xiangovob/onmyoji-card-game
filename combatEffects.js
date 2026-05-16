@@ -1,4 +1,5 @@
 function applyCombatEffects(card, owner){
+    // 攻擊增加
     if(card.damage){
         owner.combatAtk += card.damage;
         addLog(
@@ -6,6 +7,7 @@ function applyCombatEffects(card, owner){
         );
     }
 
+    // 護盾
     if(card.shield){
         owner.shield += card.shield;
         addLog(
@@ -13,6 +15,7 @@ function applyCombatEffects(card, owner){
         );
     }
 
+    // 免疫戰鬥傷害
     if(card.immuneCombat){
         owner.immuneCombat = true;
         addLog(
@@ -20,6 +23,7 @@ function applyCombatEffects(card, owner){
         );
     }
 
+    // 擊殺抽牌
     if(card.drawOnKill){
         owner.drawOnKill = true;
         addLog(

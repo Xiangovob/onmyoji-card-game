@@ -84,27 +84,16 @@ const cardData = [
         desc: "使一名我方式神獲得 2 點護盾。"
     },
 
-    // 刺客
+    // 妖刀刀妹
     {
-        id: "assassin_assassinate",
-        owner: "assassin",
-        name: "暗殺",
-        cost: 1,
+        name: "不祥之刃",
+        owner: "youtou",
         type: "combat",
-        tags: ["damage"],
-        damage: 3,
-        desc: "本次戰鬥攻擊力 +3。"
-    },
-
-    {
-        id: "assassin_shadow_blade",
-        owner: "assassin",
-        name: "影刃",
         cost: 1,
-        type: "spell",
-        tags: ["damage"],
-        damage: 4,
-        desc: "對一名敵方式神造成 4 點傷害。"
-    }
+        combatAtk: 0,
+        shield: 1,
+        effect: "drawOnKill",
+        text: "本次戰鬥+1護盾。消滅敵方角色時，抽一張牌。"
+}
 
 ];

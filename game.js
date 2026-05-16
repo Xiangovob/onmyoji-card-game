@@ -260,10 +260,16 @@ function useCombatCard(card, owner){
 }
 
 function surrender(){
-    player.coreHp = 0;
-    addLog("你選擇投降");
-    checkWin();
-    render();
+    let yes = confirm("確定要投降嗎？");
+    // 按取消
+    if(!yes){
+        return;
+    }
+    addLog("玩家選擇投降");
+    gameOver = true;
+    setTimeout(()=>{
+        window.location.href = "index.html";
+    }, 800);
 }
 
 function checkWin(){

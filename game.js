@@ -250,6 +250,11 @@ function useCombatCard(card, owner){
     );
     applyCombatEffects(card, owner);
     doCombat(player, enemy);
+    checkDeaths(player);
+    checkDeaths(enemy);
+    // 戰鬥結束後清Buff
+    clearCombatEffects(player.combat);
+    clearCombatEffects(enemy.combat);
 }
 function surrender(){
     let yes = confirm("確定要投降嗎？");

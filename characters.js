@@ -2,10 +2,10 @@ const characterData = [
     {
         id: "fox",
         name: "狐妖",
+        atk: 2,
         hp: 4,
-        atk: 3,
-        passiveName: "回合回血",
-        passive: ["healOnTurnStart"]
+        passive: ["projectOnSpell"],
+        passiveName: "使用法術牌時，投射1"
     },
     {
         id: "guard",

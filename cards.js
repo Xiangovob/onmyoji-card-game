@@ -2,16 +2,15 @@ const cardData = [
 
     // 狐妖
     {
-        id: "fox_fire",
+        id: "fox_howl",
         owner: "fox",
-        name: "狐火",
+        name: "狐嘯",
         cost: 1,
         type: "spell",
-        tags: ["damage", "instant"],
-        damage: 3,
-        desc: "對一名敵方式神造成 3 點傷害。"
+        tags:["damage", "core"],
+        damage: 2,
+        text: "對敵方本體造成2點傷害。"
     },
-
     {
         id: "fox_shadow_attack",
         owner: "fox",

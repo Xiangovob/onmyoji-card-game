@@ -54,6 +54,15 @@ function isValidSpellTarget(card, sideName, targetType, target){
 }
 
 function useSpellCard(card, owner, targetInfo){
+    let ownerSide =
+        player.bench.includes(owner)
+        ? player
+        : enemy;
+
+    let enemySide =
+        ownerSide === player
+        ? enemy
+        : player;
 
     if(card.tags.includes("aoe")){
 
@@ -66,7 +75,13 @@ function useSpellCard(card, owner, targetInfo){
         addLog(
             `${owner.name}使用${card.name}，對敵方全體造成${card.damage}傷害`
         );
-
+        triggerPassive(
+            owner,
+            "onSpell",
+            ownerSide,
+            enemySide
+        );
+        
         return;
     }
 
@@ -109,6 +124,12 @@ function useSpellCard(card, owner, targetInfo){
             `${owner.name}使用${card.name}，${target.name}獲得${card.shield}護盾`
         );
     }
+    triggerPassive(
+        owner,
+        "onSpell",
+        ownerSide,
+        enemySide
+    );
 }
 
 function getAllAliveEnemyUnits(){

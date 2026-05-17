@@ -47,3 +47,4 @@ function triggerPassive(unit, triggerType, ownerSide, enemySide){
         }
     });
 }
+

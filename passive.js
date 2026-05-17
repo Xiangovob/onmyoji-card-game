@@ -48,3 +48,25 @@ function triggerPassive(unit, triggerType, ownerSide, enemySide){
     });
 }
 
+function triggerProjectile(unit, enemySide){
+
+    // 優先打戰鬥區
+    if(enemySide.combat && !enemySide.combat.isDead){
+
+        dealDamage(enemySide.combat, 1);
+
+        addLog(
+            `${unit.name}投射1點傷害給${enemySide.combat.name}`
+        );
+    }
+
+    // 沒有戰鬥區則打本體
+    else{
+
+        enemySide.coreHp -= 1;
+
+        addLog(
+            `${unit.name}投射1點傷害給${enemySide.name}本體`
+        );
+    }
+}

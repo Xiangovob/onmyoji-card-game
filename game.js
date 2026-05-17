@@ -129,6 +129,22 @@ function useCard(index){
             afterPlayerAction();
             return;
         }
+        if(card.tags.includes("core")){
+            if(useInstant){
+                player.instantChance--;
+                addLog(
+                    `${card.name}使用瞬發，不消耗鬼火`
+                );
+            }else{
+                player.energy -= card.cost;
+            }
+            useSpellCard(card, owner, {
+                targetType: "core"
+            });
+            discardPlayerCard(index);
+            afterPlayerAction();
+            return;
+        }
         selectingCardIndex = index;
         selectingCard = card;
         selectingOwner = owner;

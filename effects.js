@@ -84,6 +84,32 @@ function useSpellCard(card, owner, targetInfo){
         
         return;
     }
+    if(card.tags.includes("allEnemy")){
+        // 敵方戰鬥區
+        if(enemySide.combat && !enemySide.combat.isDead){
+            dealDamage(enemySide.combat, card.damage);
+        }
+        // 敵方準備區
+        enemySide.bench.forEach(unit => {
+    
+            if(!unit.isDead){
+    
+                dealDamage(unit, card.damage);
+            }
+        });
+        // 敵方本體
+        enemySide.coreHp -= card.damage;
+        addLog(
+            `${owner.name}使用${card.name}，對所有敵方目標造成${card.damage}傷害`
+        );
+        triggerPassive(
+            owner,
+            "onSpell",
+            ownerSide,
+            enemySide
+        );
+        return;
+    }
 
     let target = targetInfo.target;
 

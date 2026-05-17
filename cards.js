@@ -34,7 +34,7 @@ const cardData = [
             hp:6
         },
 
-        desc:"2/6"
+        text:"2/6"
     },
 
     // 守衛
@@ -46,7 +46,7 @@ const cardData = [
         type: "combat",
         tags: ["damage"],
         damage: 2,
-        desc: "本次戰鬥攻擊力 +2。"
+        text: "本次戰鬥攻擊力 +2。"
     },
 
     {
@@ -57,7 +57,7 @@ const cardData = [
         type: "spell",
         tags: ["shield"],
         shield: 3,
-        desc: "使一名我方式神獲得 3 點護盾。"
+        text: "使一名我方式神獲得 3 點護盾。"
     },
 
     // 祭司
@@ -69,7 +69,7 @@ const cardData = [
         type: "spell",
         tags: ["heal"],
         heal: 4,
-        desc: "恢復一名我方式神 4 點生命。"
+        text: "恢復一名我方式神 4 點生命。"
     },
 
     {
@@ -80,7 +80,7 @@ const cardData = [
         type: "spell",
         tags: ["shield"],
         shield: 2,
-        desc: "使一名我方式神獲得 2 點護盾。"
+        text: "使一名我方式神獲得 2 點護盾。"
     },
 
     // 妖刀刀妹

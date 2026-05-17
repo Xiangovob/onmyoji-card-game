@@ -83,6 +83,9 @@ function enterCombat(index){
     doCombat(player, enemy);
     checkDeaths(player);
     checkDeaths(enemy);
+    // 戰鬥正式結束後再清除
+    clearCombatEffects(player.combat);
+    clearCombatEffects(enemy.combat);
     checkWin();
     render();
 }

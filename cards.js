@@ -85,19 +85,23 @@ const cardData = [
 
     // 妖刀刀妹
     {
-        name: "不祥之刃",
+        id: "katana_cursed_blade",
         owner: "katana",
-        type: "combat",
+        name: "不祥之刃",
         cost: 1,
+        type: "combat",
+        tags:["shield", "drawOnKill"],
         shield: 1,
         drawOnKill: true,
         text: "本次戰鬥+1護盾。消滅敵方角色時，抽一張牌。"
     },
     {
-        name: "見切",
+        id: "katana_parry",
         owner: "katana",
-        type: "combat",
+        name: "見切",
         cost: 1,
+        type: "combat",
+        tags:["damage", "immuneCombat"],
         damage: 1,
         immuneCombat: true,
         text: "本次戰鬥+1攻擊，免疫本次戰鬥傷害。"

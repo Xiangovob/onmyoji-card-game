@@ -116,3 +116,10 @@ function getHp(unit){
 
     return unit.form?.hp ?? unit.hp;
 }
+
+function clearCombatEffects(unit){
+    if(!unit) return;
+    unit.combatAtk = 0;
+    unit.immuneCombat = false;
+    unit.drawOnKill = false;
+}

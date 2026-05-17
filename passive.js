@@ -45,8 +45,9 @@ function triggerPassive(unit, triggerType, ownerSide, enemySide){
                 `${unit.name}死亡被動觸發：對${enemySide.name}本體造成2傷害`
             );
         }
-
-        if(passive === "projectOnSpell"){
+        if(passive === "projectOnSpell"
+        && triggerType === "onSpell"){
+        
             triggerProjectile(unit, enemySide);
         }
     });

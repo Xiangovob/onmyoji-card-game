@@ -12,14 +12,14 @@ const cardData = [
         text: "對敵方本體造成2點傷害。"
     },
     {
-        id: "fox_shadow_attack",
+        id: "fox_cry",
         owner: "fox",
-        name: "狐影突襲",
+        name: "狐鳴",
         cost: 1,
-        type: "combat",
-        tags: ["damage"],
-        damage: 2,
-        desc: "本次戰鬥攻擊力 +2。"
+        type: "spell",
+        tags:["allEnemy"],
+        damage: 1,
+        text: "對所有敵方目標造成1點傷害。"
     },
 
     {

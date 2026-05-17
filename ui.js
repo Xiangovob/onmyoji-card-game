@@ -166,8 +166,8 @@ function render(){
 
                         費用：${card.cost}<br>
 
-                        ${card.desc
-                            ? `<small>${card.desc}</small>`
+                        ${card.text
+                            ? `<small>${card.text}</small>`
                             : ""
                         }<br>
 

@@ -203,7 +203,10 @@ function useCard(index){
         useCombatCard(card, owner);
     }
     if(card.type === "form"){
-        owner.form = card.formData;
+        owner.form = {
+            ...card.formData,
+            tags: card.tags
+        };
         owner.currentHp = getHp(owner);
         addLog(
             `${owner.name}進入型態：${card.name}`

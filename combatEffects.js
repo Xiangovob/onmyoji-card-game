@@ -30,4 +30,12 @@ function applyCombatEffects(card, owner){
             `${owner.name}本次戰鬥擊殺敵人時將抽1張牌`
         );
     }
+    if(card.tags.includes("shieldScale")){
+        owner.tempAtk =
+            (owner.tempAtk || 0)
+            + owner.shield;
+        addLog(
+            `${owner.name}因護盾獲得${owner.shield}攻擊`
+        );
+    }
 }

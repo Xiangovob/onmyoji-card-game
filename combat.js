@@ -12,7 +12,20 @@ function getAtk(unit){
     return atk;
 }
 function dealDamage(unit, damage){
-
+    if(
+        unit.form &&
+        unit.form.tags &&
+        unit.form.tags.includes("shieldLimit") &&
+        unit.shield > 0
+    ){
+        let limit = unit.shield;
+        if(damage > limit){
+            addLog(
+                `${unit.name}的護盾限制了傷害`
+            );
+            damage = limit;
+        }
+    }
     if(unit.shield > 0){
 
         let block = Math.min(unit.shield, damage);

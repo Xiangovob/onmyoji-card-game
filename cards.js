@@ -62,16 +62,15 @@ const cardData = [
 
     // 祭司
     {
-        id: "priest_heal",
-        owner: "priest",
-        name: "治療術",
-        cost: 1,
-        type: "spell",
-        tags: ["heal"],
-        heal: 4,
-        text: "恢復一名我方式神 4 點生命。"
+        id:"holyLight",
+        owner:"priest",
+        name:"神癒之光",
+        cost:1,
+        type:"spell",
+        tags:["heal"],
+        heal:5,
+        text:"為一個目標回復5生命"
     },
-
     {
         id: "priest_holy_shield",
         owner: "priest",

@@ -39,14 +39,13 @@ const cardData = [
 
     // 守衛
     {
-        id: "guard_charge",
-        owner: "guard",
-        name: "守衛衝鋒",
-        cost: 1,
-        type: "combat",
-        tags: ["damage"],
-        damage: 2,
-        text: "本次戰鬥攻擊力 +2。"
+        id:"guard_shield_slam",
+        owner:"guard",
+        name:"重盾猛擊",
+        cost:1,
+        type:"combat",
+        tags:["shieldScale"],
+        text:"本次戰鬥中，守衛每有1盾獲得+1攻擊"
     },
 
     {

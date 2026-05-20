@@ -7,12 +7,12 @@ window.deckData = {
 
         "holySpring",
         "holySpring",
+        
+        "fox_howl",
+        "fox_howl",
 
-        "foxFire",
-        "foxFire",
-
-        "foxCry",
-        "foxCry"
+        "fox_cry",
+        "fox_cry"
     ],
 
     priestDeck:[
@@ -26,10 +26,10 @@ window.deckData = {
 
     foxDeck:[
 
-        "foxFire",
-        "foxFire",
-
-        "foxCry",
-        "foxCry"
+        "fox_howl",
+        "fox_howl",
+        
+        "fox_cry",
+        "fox_cry"
     ]
 };

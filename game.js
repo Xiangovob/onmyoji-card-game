@@ -59,8 +59,15 @@ function shuffleDeck(who){
 }
 
 function startGame(){
-    buildDeck(player);
-    buildDeck(enemy);
+    buildDeck(
+        player,
+        deckData.starterDeck
+    );
+
+    buildDeck(
+        enemy,
+        deckData.priestDeck
+    );
 
     for(let i = 0; i < 4; i++){
         drawCard(player);

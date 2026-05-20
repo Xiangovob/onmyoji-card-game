@@ -42,12 +42,17 @@ let enemy = createPlayer("敵人");
 
 function buildDeck(who, deckList){
     who.deck = deckList.map(id => {
-        return structuredClone(
-            cardData.find(
-                c => c.id === id
-            )
+        let card = cardData.find(
+            c => c.id === id
         );
-    });
+        if(!card){
+            console.error(
+                `找不到卡牌id：${id}`
+            );
+            return null;
+        }
+        return structuredClone(card);
+    }).filter(card => card !== null);
     shuffleDeck(who);
 }
 

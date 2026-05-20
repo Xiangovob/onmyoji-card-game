@@ -7,7 +7,13 @@ window.deckData = {
 
         "holySpring",
         "holySpring",
-        
+
+        "guard_shield_slam",
+        "guard_shield_slam",
+
+        "guard_fortress",
+        "guard_fortress",
+
         "fox_howl",
         "fox_howl",
 

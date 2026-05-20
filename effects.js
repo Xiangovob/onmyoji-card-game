@@ -135,7 +135,13 @@ function useSpellCard(card, owner, targetInfo){
 
     if(card.tags.includes("heal")){
 
-        healTarget(target, card.heal);
+        healTarget(
+            target,
+            card.heal,
+            owner,
+            ownerSide,
+            enemySide
+        );
 
         addLog(
             `${owner.name}使用${card.name}，${target.name}恢復${card.heal}`

@@ -38,4 +38,12 @@ function applyCombatEffects(card, owner){
             `${owner.name}因護盾獲得${owner.shield}攻擊`
         );
     }
+
+    if(card.tags.includes("shieldScale")){
+        owner.combatAtk += owner.shield;
+        addLog(
+            `${owner.name}因護盾獲得${owner.shield}攻擊`
+        );
+    }
+    
 }

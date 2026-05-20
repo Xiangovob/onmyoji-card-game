@@ -12,16 +12,16 @@ const characterData = [
         name: "守衛",
         hp: 5,
         atk: 2,
-        passiveName: "受傷獲盾",
-        passive: ["gainShieldOnHurt"]
+        passive: ["gainShieldOnHurt"],
+        passiveName: "受傷獲盾"
     },
     {
-        id: "priest",
-        name: "祭司",
-        hp: 5,
-        atk: 1,
-        passiveName: "回合護盾",
-        passive: ["shieldOnTurnStart"]
+        id:"priest",
+        name:"祭司",
+        atk:1,
+        hp:6,
+        passive:["priestBless"],
+        passiveName:"每當祭司治癒或復活己方目標時，使其 +1攻並抽1"
     },
     {
         id: "katana",

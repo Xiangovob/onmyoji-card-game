@@ -1,4 +1,4 @@
-function triggerPassivefunction triggerPassive(
+function triggerPassive(
     unit,
     triggerType,
     ownerSide,

@@ -1,4 +1,4 @@
-const deckData = {
+window.deckData = {
 
     starterDeck:[
 

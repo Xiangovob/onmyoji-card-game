@@ -203,10 +203,8 @@ function useCard(index){
         useCombatCard(card, owner);
     }
     if(card.type === "form"){
-        let oldHp = getHp(owner);
         owner.form = card.formData;
-        let newHp = getHp(owner);
-        owner.currentHp += (newHp - oldHp);
+        owner.currentHp = getHp(owner);
         addLog(
             `${owner.name}進入型態：${card.name}`
         );

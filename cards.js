@@ -72,16 +72,14 @@ const cardData = [
         text:"為一個目標回復5生命"
     },
     {
-        id: "priest_holy_shield",
-        owner: "priest",
-        name: "聖光護佑",
-        cost: 1,
-        type: "spell",
-        tags: ["shield"],
-        shield: 2,
-        text: "使一名我方式神獲得 2 點護盾。"
+        id:"holySpring",
+        owner:"priest",
+        name:"聖泉湧現",
+        cost:1,
+        type:"spell",
+        tags:["instant","search"],
+        text:"選一個己方角色，從牌庫抽一張其專屬牌"
     },
-
     // 妖刀刀妹
     {
         id: "katana_cursed_blade",

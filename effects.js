@@ -50,6 +50,23 @@ function isValidSpellTarget(card, sideName, targetType, target){
         return true;
     }
 
+    if(card.tags.includes("search")){
+        if(sideName !== "player"
+        || targetType === "core"){
+            addLog(
+                "檢索法術只能指定我方角色"
+            );
+            return false;
+        }
+        if(!target || target.isDead){
+            addLog(
+                "死亡角色不能被指定"
+            );
+            return false;
+        }
+        return true;
+    }
+
     return false;
 }
 

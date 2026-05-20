@@ -47,16 +47,19 @@ const cardData = [
         tags:["shieldScale"],
         text:"本次戰鬥中，守衛每有1盾獲得+1攻擊"
     },
-
     {
-        id: "guard_iron_wall",
-        owner: "guard",
-        name: "鋼鐵壁壘",
-        cost: 1,
-        type: "spell",
-        tags: ["shield"],
-        shield: 3,
-        text: "使一名我方式神獲得 3 點護盾。"
+        id:"guard_fortress",
+        owner:"guard",
+        name:"不動堡壘",
+        cost:1,
+        type:"form",
+        formData:{
+            atk:4,
+            hp:7
+        },
+        tags:["enterShield","shieldLimit"],
+        shield:2,
+        text:"4/7。進場時獲得2盾。守衛有護盾時，至多受到等同護盾值的傷害。"
     },
 
     // 祭司

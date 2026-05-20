@@ -104,11 +104,7 @@ function render(){
                     <div class="bench-unit">
 
                         <div class="card ${unit.isDead ? "dead-card" : ""}"
-                            onclick="${
-                                selectingCard && !unit.isDead
-                                ? `selectTarget('player', 'bench', ${index})`
-                                : ""
-                            }">
+                            onclick="selectTarget('player', 'bench', ${index})">
 
                             ${unit.name}<br>
 

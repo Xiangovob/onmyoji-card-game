@@ -25,10 +25,10 @@ function triggerPassive(
         if(passive === "shieldOnTurnStart"
         && triggerType === "onTurnStart"){
 
-            unit.shield += 1;
+            unit.shield += 2;
 
             addLog(
-                `${unit.name}被動觸發：獲得1護盾`
+                `${unit.name}被動觸發：獲得2護盾`
             );
         }
 

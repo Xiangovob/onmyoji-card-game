@@ -1,4 +1,10 @@
-function triggerPassive(unit, triggerType, ownerSide, enemySide){
+function triggerPassivefunction triggerPassive(
+    unit,
+    triggerType,
+    ownerSide,
+    enemySide,
+    target = null
+){
 
     if(unit.isDead && triggerType !== "onDeath") return;
 
@@ -50,6 +56,17 @@ function triggerPassive(unit, triggerType, ownerSide, enemySide){
         
             triggerProjectile(unit, enemySide);
         }
+        if(passive === "priestBless"&& triggerType === "onHeal"){
+            if(target){
+                target.permanentAtk =
+                    (target.permanentAtk || 0) + 1;
+                drawCard(ownerSide);
+                addLog(
+                    `${unit.name}祝福了${target.name}，使其+1攻並抽1張牌`
+                );
+            }
+        }
+        
     });
 }
 

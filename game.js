@@ -40,8 +40,14 @@ function createPlayer(name){
 let player = createPlayer("玩家");
 let enemy = createPlayer("敵人");
 
-function buildDeck(who){
-    who.deck = [...cardData, ...cardData];
+function buildDeck(who, deckList){
+    who.deck = deckList.map(id => {
+        return structuredClone(
+            cardData.find(
+                c => c.id === id
+            )
+        );
+    });
     shuffleDeck(who);
 }
 

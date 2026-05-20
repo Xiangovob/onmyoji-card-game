@@ -10,10 +10,10 @@ const characterData = [
     {
         id: "guard",
         name: "守衛",
-        hp: 5,
-        atk: 2,
-        passive: ["gainShieldOnHurt"],
-        passiveName: "受傷獲盾"
+        hp: 6,
+        atk: 1,
+        passive:["shieldOnTurnStart"],
+        passiveName:"己方回合開始時獲得2盾"
     },
     {
         id:"priest",

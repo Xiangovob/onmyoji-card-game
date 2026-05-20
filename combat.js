@@ -52,7 +52,15 @@ function dealDamage(unit, damage){
     }
 }
 
-function healTarget(unit, amount){
+function healTarget(
+    unit,
+    amount,
+    source = null,
+    ownerSide = null,
+    enemySide = null
+){
+
+    let oldHp = unit.currentHp;
 
     unit.currentHp += amount;
 
@@ -63,6 +71,24 @@ function healTarget(unit, amount){
 
     if(unit.currentHp > maxHp){
         unit.currentHp = maxHp;
+    }
+
+    let healed =
+        unit.currentHp - oldHp;
+
+    // 真的有補到才觸發
+    if(
+        healed > 0
+        && source
+    ){
+
+        triggerPassive(
+            source,
+            "onHeal",
+            ownerSide,
+            enemySide,
+            unit
+        );
     }
 }
 

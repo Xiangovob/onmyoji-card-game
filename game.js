@@ -261,6 +261,13 @@ function cancelTargetSelect(){
     addLog("取消選擇目標");
     render();
 }
+
+function showUnitInfo(index){
+    selectedInfoUnit =
+        player.bench[index];
+    render();
+}
+
 function discardPlayerCard(index){
     let usedCard = player.hand.splice(index, 1)[0];
     player.discardPile.push(usedCard);

@@ -1,5 +1,5 @@
 let gameOver = false;
-
+let selectedInfoUnit = null;
 let selectingCardIndex = null;
 let selectingCard = null;
 let selectingOwner = null;

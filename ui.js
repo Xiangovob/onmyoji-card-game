@@ -191,4 +191,5 @@ function render(){
     // 手牌數
     document.getElementById("hand-count-text").innerText =
     `${player.hand.length}/${player.maxHand}`;
+    renderUnitInfoPanel();
 }

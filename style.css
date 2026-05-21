@@ -606,3 +606,8 @@ body.menu-page{
     margin-right: 20px;
     box-sizing: border-box;
 }
+
+#unit-info-panel button{
+    float: right;
+    margin-bottom: 10px;
+}

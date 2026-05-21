@@ -34,6 +34,11 @@ function render(){
             ${
                 enemy.bench.map((unit, index) => `
                     <div class="card ${unit.isDead ? "dead-card" : ""}"
+                        title="
+                    型態：
+                    ${unit.form?.formName || "無"}  
+                    ${unit.form?.formText || ""}
+                    "
                         onclick="${!unit.isDead ? `selectTarget('enemy', 'bench', ${index})` : ""}">
                         ${unit.name}<br>
 

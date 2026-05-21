@@ -611,3 +611,8 @@ body.menu-page{
     float: right;
     margin-bottom: 10px;
 }
+
+#bottom-area{
+    display: flex;
+    align-items: flex-start;
+}

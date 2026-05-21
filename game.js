@@ -205,7 +205,9 @@ function useCard(index){
     if(card.type === "form"){
         owner.form = {
             ...card.formData,
-            tags: card.tags
+            tags: card.tags,
+            formName: card.name,
+            formText: card.text
         };
         owner.currentHp = getHp(owner);
         addLog(

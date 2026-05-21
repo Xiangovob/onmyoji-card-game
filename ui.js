@@ -109,11 +109,14 @@ function render(){
                     <div class="bench-unit">
 
                         <div class="card ${unit.isDead ? "dead-card" : ""}"
-                            onclick="${
-                                selectingCard && !unit.isDead
-                                ? `selectTarget('player', 'bench', ${index})`
-                                : ""
-                            }">
+                            onclick="
+                                ${
+                                    selectingCard && !unit.isDead
+                                    ? `selectTarget('player', 'bench', ${index});`
+                                    : ""
+                                }
+                                showUnitInfo(${index});
+                            ">
 
                             ${unit.name}<br>
 

@@ -193,3 +193,43 @@ function render(){
     `${player.hand.length}/${player.maxHand}`;
     renderUnitInfoPanel();
 }
+
+function renderUnitInfoPanel(){
+    let panel =
+        document.getElementById(
+            "unit-info-panel"
+        );
+    // 沒有正在查看的角色
+    if(!selectedInfoUnit){
+        panel.innerHTML = "";
+        return;
+    }
+    panel.innerHTML = `
+        <button onclick="
+            selectedInfoUnit = null;
+            render();
+        ">
+            X
+        </button>
+        <h3>
+            ${selectedInfoUnit.name}
+        </h3>
+        <p>
+            被動：
+            ${selectedInfoUnit.passiveName}
+        </p>
+        <p>
+            型態：
+            ${
+                selectedInfoUnit.form?.formName
+                || "無"
+            }
+        </p>
+        <p>
+            ${
+                selectedInfoUnit.form?.formText
+                || ""
+            }
+        </p>
+    `;
+}

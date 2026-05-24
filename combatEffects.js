@@ -29,7 +29,10 @@ function applyCombatEffects(card, owner){
     }
     // 擊殺抽牌
     if(card.drawOnKill){
-        owner.drawOnKill = true;
+        addStatus(owner, {
+            type: "drawOnKill",
+            duration: 1
+        });
         addLog(
             `${owner.name}本次戰鬥擊殺敵人時將抽1張牌`
         );

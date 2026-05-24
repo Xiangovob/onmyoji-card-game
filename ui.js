@@ -231,3 +231,24 @@ function renderUnitInfoPanel(){
         </p>
     `;
 }
+
+function getOwnerName(owner){
+
+    let map = {
+        fox: "狐妖",
+        guard: "守衛",
+        priest: "祭司",
+        katana: "妖刀"
+    };
+
+    return map[owner] || owner;
+}
+
+function getCardTypeName(type){
+    let map = {
+        spell: "法術",
+        combat: "戰鬥",
+        form: "型態"
+    };
+    return map[type] || type;
+}

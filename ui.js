@@ -171,15 +171,13 @@ function render(){
                         onclick="useCard(${index})">
 
                         <strong>${card.name}</strong><br>
-
-                        費用：${card.cost}<br>
-
                         ${card.text
                             ? `<small>${card.text}</small>`
                             : ""
                         }<br>
-
-                        <span>${card.type}</span>
+                        <span class="card-footer">
+                            ${getOwnerName(card.owner)}｜${getCardTypeName(card.type)}
+                        </span>
 
                     </button>
 

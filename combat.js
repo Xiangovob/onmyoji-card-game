@@ -120,24 +120,24 @@ function doCombat(attackerSide, defenderSide){
     );
 
     // 雙方交戰
-    if(defender && !defender.isDead){
-        if(!defender.immuneCombat){
-            dealDamage(
-                defender,
-                getAtk(attacker)
-            );
-        }
-        if(!attacker.immuneCombat){
-            dealDamage(
-                attacker,
-                getAtk(defender)
-            );
-        }
-        addLog(
-            `${attacker.name}與${defender.name}交戰`
+if(defender && !defender.isDead){
+    if(!hasStatus(defender, "immuneCombat")){
+        dealDamage(
+            defender,
+            getAtk(attacker)
         );
-
     }
+
+    if(!hasStatus(attacker, "immuneCombat")){
+        dealDamage(
+            attacker,
+            getAtk(defender)
+        );
+    }
+    addLog(
+        `${attacker.name}與${defender.name}交戰`
+    );
+}
 
     // 直接攻擊本體
     else{
@@ -158,7 +158,5 @@ function getHp(unit){
 
 function clearCombatEffects(unit){
     if(!unit) return;
-    unit.combatAtk = 0;
-    unit.immuneCombat = false;
-    unit.drawOnKill = false;
+    clearTemporaryStatus(unit);
 }

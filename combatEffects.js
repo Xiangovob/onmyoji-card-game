@@ -17,7 +17,10 @@ function applyCombatEffects(card, owner){
 
     // 免疫戰鬥傷害
     if(card.immuneCombat){
-        owner.immuneCombat = true;
+        addStatus(owner, {
+            type: "immuneCombat",
+            duration: 1
+        });
         addLog(
             `${owner.name}免疫本次戰鬥傷害`
         );

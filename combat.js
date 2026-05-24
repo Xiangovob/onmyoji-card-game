@@ -5,7 +5,7 @@ function getAtk(unit){
 
     atk += unit.permanentAtk;
     atk += unit.turnAtk;
-    atk += unit.combatAtk;
+    atk += getStatusValue(unit, "atkUp");
 
     atk -= unit.debuffAtk;
 

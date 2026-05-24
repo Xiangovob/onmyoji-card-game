@@ -1,7 +1,11 @@
 function applyCombatEffects(card, owner){
     // 攻擊增加
     if(card.damage){
-        owner.combatAtk += card.damage;
+        addStatus(owner, {
+            type: "atkUp",
+            value: card.damage,
+            duration: 1
+        });
         addLog(
             `${owner.name}攻擊增加${card.damage}`
         );

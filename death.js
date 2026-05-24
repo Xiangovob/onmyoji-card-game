@@ -19,7 +19,7 @@ function killUnit(unit, who){
     player.combat === unit
     ? enemy.combat
     : player.combat;
-    if(killer && killer.drawOnKill){
+    if(killer && hasStatus(killer, "drawOnKill")){
         let ownerSide =
             player.bench.includes(killer)
             ? player

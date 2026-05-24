@@ -618,3 +618,16 @@ body.menu-page{
     display: flex;
     align-items: flex-start;
 }
+
+.hand-card small{
+    font-size: 11px;
+    line-height: 1.2;
+    display: block;
+}
+
+.card-footer{
+    font-size: 11px;
+    line-height: 1.2;
+    display: block;
+    margin-top: 4px;
+}

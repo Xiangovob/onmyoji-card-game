@@ -28,6 +28,7 @@ function createPlayer(name){
             combatAtk: 0,
             debuffAtk: 0,
             shield: 0,
+            statuses: [],
             isDead: false,
             reviveCounter: 0,
             position: index,

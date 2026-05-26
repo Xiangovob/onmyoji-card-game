@@ -24,7 +24,7 @@ window.deckData = {
         "katana_cursed_blade"
 
         "katana_parry",
-        "katana_parry",
+        "katana_parry"
     ],
 
     priestDeck:[

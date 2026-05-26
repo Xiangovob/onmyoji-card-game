@@ -18,7 +18,13 @@ window.deckData = {
         "fox_howl",
 
         "fox_cry",
-        "fox_cry"
+        "fox_cry",
+
+        "katana_cursed_blade",
+        "katana_cursed_blade"
+
+        "katana_parry",
+        "katana_parry",
     ],
 
     priestDeck:[

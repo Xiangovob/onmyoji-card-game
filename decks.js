@@ -21,7 +21,7 @@ window.deckData = {
         "fox_cry",
 
         "katana_cursed_blade",
-        "katana_cursed_blade"
+        "katana_cursed_blade",
 
         "katana_parry",
         "katana_parry"

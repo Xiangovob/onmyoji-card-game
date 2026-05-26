@@ -2,31 +2,23 @@ window.deckData = {
 
     starterDeck:[
 
-        "holyLight",
-        "holyLight",
+    "holyLight",
+    "holySpring",
 
-        "holySpring",
-        "holySpring",
+    "guard_shield_slam",
+    "guard_fortress",
 
-        "guard_shield_slam",
-        "guard_shield_slam",
+    "fox_howl",
+    "fox_cry",
 
-        "guard_fortress",
-        "guard_fortress",
+    "katana_cursed_blade",
+    "katana_cursed_blade",
 
-        "fox_howl",
-        "fox_howl",
-
-        "fox_cry",
-        "fox_cry",
-
-        "katana_cursed_blade",
-        "katana_cursed_blade",
-
-        "katana_parry",
-        "katana_parry"
+    "katana_parry",
+    "katana_parry"
+        
     ],
-
+    
     priestDeck:[
         "katana_cursed_blade",
         "katana_cursed_blade",

@@ -42,8 +42,8 @@ function createPlayer(name, selectedIds){
         })
     };
 }
-let player = createPlayer("玩家");
-let enemy = createPlayer("敵人");
+player = createPlayer("玩家", playerSelectedCharacters);
+enemy = createPlayer("敵人", enemySelectedCharacters);
 
 function buildDeck(who, deckList){
     who.deck = deckList.map(id => {

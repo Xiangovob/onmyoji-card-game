@@ -32,7 +32,7 @@ const characterData = [
         passiveName: "死亡時對敵方本體造成2點傷害"
     }
     {
-        id: "shang",
+        id: "vex",
         name: "殤",
         atk: 2,
         hp: 6,

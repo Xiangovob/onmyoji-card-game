@@ -105,5 +105,30 @@ const cardData = [
         immuneCombat: true,
         text: "本次戰鬥+1攻擊，免疫本次戰鬥傷害。"
     },
-
+    // 殤
+    {
+        id: "vex_pain_feedback",
+        owner: "vex",
+        name: "痛噬反哺",
+        cost: 1,
+        type: "spell",
+        tags: ["selfDamage", "draw"],
+        damage: 1,
+        draw: 1,
+        text: "對殤造成1點傷害，抽1張牌。"
+    },
+    {
+        id: "vex_crush_prayer",
+        owner: "vex",
+        name: "粉碎祈禱",
+        cost: 1,
+        type: "form",
+        tags: ["enterSelfDamage"],
+        damage: 4,
+        formData: {
+            atk: 6,
+            hp: 10
+        },
+        text: "6/10。進場時對殤造成4點傷害。"
+    }
 ];

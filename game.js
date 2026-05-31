@@ -71,9 +71,6 @@ function shuffleDeck(who){
 function startGame(){
     player = createPlayer("玩家", playerSelectedCharacters);
     enemy = createPlayer("敵人", enemySelectedCharacters);
-
-    console.log("玩家角色：", player.bench);
-    console.log("敵人角色：", enemy.bench);
     
     buildDeck(
         player,

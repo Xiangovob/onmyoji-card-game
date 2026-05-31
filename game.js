@@ -3,8 +3,8 @@ let selectedInfoUnit = null;
 let selectingCardIndex = null;
 let selectingCard = null;
 let selectingOwner = null;
-let playerSelectedCharacters = ["fox", "guard", "priest", "katana"];
-let enemySelectedCharacters = ["fox", "guard", "priest", "vex"];
+let playerSelectedCharacters = ["fox", "guard", "priest", "vex"];
+let enemySelectedCharacters = ["fox", "guard", "priest", "katana"];
 let player;
 let enemy;
 

@@ -31,4 +31,12 @@ const characterData = [
         passive: ["damageEnemyCoreOnDeath"],
         passiveName: "死亡時對敵方本體造成2點傷害"
     }
+    {
+        id: "shang",
+        name: "殤",
+        atk: 2,
+        hp: 6,
+        passive: ["gainAtkOnHurt"],
+        passiveName: "每當殤受到一次傷害時，+1攻"
+    }
 ];

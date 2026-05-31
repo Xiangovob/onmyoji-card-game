@@ -4,7 +4,9 @@ let selectingCardIndex = null;
 let selectingCard = null;
 let selectingOwner = null;
 
-function createPlayer(name){
+let selectedCharacters = ["fox", "guard", "priest", "katana"];
+
+function createPlayer(name, selectedIds = selectedCharacters){
     return {
         name,
         coreHp: 30,
@@ -17,27 +19,29 @@ function createPlayer(name){
         attackChance: 1, 
         maxHand: 8,
         combat: null,
-        bench: characterData.map((char, index) => ({
-            ...char,
-            passive: char.passive || [],
-            passiveName: char.passiveName || "無",
-            currentHp: char.hp,
-            form: null,
-            permanentAtk: 0,
-            turnAtk: 0,
-            combatAtk: 0,
-            debuffAtk: 0,
-            shield: 0,
-            statuses: [],
-            isDead: false,
-            reviveCounter: 0,
-            position: index,
-            immuneCombat: false,
-            drawOnKill: false
-        }))
+        bench: selectedIds.map((id, index) => {
+            let char = characterData.find(c => c.id === id);
+            return {
+                ...char,
+                passive: char.passive || [],
+                passiveName: char.passiveName || "無",
+                currentHp: char.hp,
+                form: null,
+                permanentAtk: 0,
+                turnAtk: 0,
+                combatAtk: 0,
+                debuffAtk: 0,
+                shield: 0,
+                statuses: [],
+                isDead: false,
+                reviveCounter: 0,
+                position: index,
+                immuneCombat: false,
+                drawOnKill: false
+            };
+        })
     };
 }
-
 let player = createPlayer("玩家");
 let enemy = createPlayer("敵人");
 

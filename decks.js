@@ -11,11 +11,11 @@ window.deckData = {
     "fox_howl",
     "fox_cry",
 
-    "katana_cursed_blade",
-    "katana_cursed_blade",
-
-    "katana_parry",
-    "katana_parry"
+    "vex_pain_feedback",
+    "vex_pain_feedback",
+    
+    "vex_crush_prayer",
+    "vex_crush_prayer"
         
     ],
     

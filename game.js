@@ -3,7 +3,6 @@ let selectedInfoUnit = null;
 let selectingCardIndex = null;
 let selectingCard = null;
 let selectingOwner = null;
-
 let selectedCharacters = ["fox", "guard", "priest", "katana"];
 
 function createPlayer(name, selectedIds = selectedCharacters){

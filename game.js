@@ -6,7 +6,7 @@ let selectingOwner = null;
 let playerSelectedCharacters = ["fox", "guard", "priest", "katana"];
 let enemySelectedCharacters = ["fox", "guard", "priest", "katana"];
 
-function createPlayer(name, selectedIds = selectedCharacters){
+function createPlayer(name, selectedIds){
     return {
         name,
         coreHp: 30,

@@ -5,6 +5,8 @@ let selectingCard = null;
 let selectingOwner = null;
 let playerSelectedCharacters = ["fox", "guard", "priest", "katana"];
 let enemySelectedCharacters = ["fox", "guard", "priest", "katana"];
+let player;
+let enemy;
 
 function createPlayer(name, selectedIds){
     return {
@@ -42,8 +44,6 @@ function createPlayer(name, selectedIds){
         })
     };
 }
-player = createPlayer("玩家", playerSelectedCharacters);
-enemy = createPlayer("敵人", enemySelectedCharacters);
 
 function buildDeck(who, deckList){
     who.deck = deckList.map(id => {
@@ -69,6 +69,9 @@ function shuffleDeck(who){
 }
 
 function startGame(){
+    player = createPlayer("玩家", playerSelectedCharacters);
+    enemy = createPlayer("敵人", enemySelectedCharacters);
+    
     buildDeck(
         player,
         deckData.starterDeck

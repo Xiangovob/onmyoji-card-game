@@ -12,50 +12,38 @@ function triggerPassive(
 
     unit.passive.forEach(passive => {
 
-        if(passive === "healOnTurnStart"
-        && triggerType === "onTurnStart"){
-
+        if(passive === "healOnTurnStart"&& triggerType === "onTurnStart"){
             healTarget(unit, 1);
-
             addLog(
                 `${unit.name}被動觸發：回復1血`
             );
         }
         
-        if(passive === "shieldOnTurnStart"
-        && triggerType === "onTurnStart"){
-
+        if(passive === "shieldOnTurnStart"&& triggerType === "onTurnStart"){
             unit.shield += 2;
-
             addLog(
                 `${unit.name}被動觸發：獲得2護盾`
             );
         }
 
-        if(passive === "gainShieldOnHurt"
-        && triggerType === "onHurt"){
-
+        if(passive === "gainShieldOnHurt"&& triggerType === "onHurt"){
             unit.shield += 1;
-
             addLog(
                 `${unit.name}被動觸發：受傷後獲得1護盾`
             );
         }
 
-        if(passive === "damageEnemyCoreOnDeath"
-        && triggerType === "onDeath"){
-
+        if(passive === "damageEnemyCoreOnDeath"&& triggerType === "onDeath"){
             enemySide.coreHp -= 2;
-
             addLog(
                 `${unit.name}死亡被動觸發：對${enemySide.name}本體造成2傷害`
             );
         }
-        if(passive === "projectOnSpell"
-        && triggerType === "onSpell"){
         
+        if(passive === "projectOnSpell"&& triggerType === "onSpell"){
             triggerProjectile(unit, enemySide);
         }
+        
         if(passive === "priestBless"&& triggerType === "onHeal"){
             if(target){
                 target.permanentAtk =
@@ -67,6 +55,12 @@ function triggerPassive(
             }
         }
         
+        if(passive === "gainAtkOnHurt" &&triggerType === "onHurt"){
+            unit.permanentAtk += 1;
+            addLog(
+                `${unit.name}受到傷害，永久獲得+1攻`
+            );
+        }
     });
 }
 

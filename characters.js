@@ -30,7 +30,7 @@ const characterData = [
         hp: 4,
         passive: ["damageEnemyCoreOnDeath"],
         passiveName: "死亡時對敵方本體造成2點傷害"
-    }
+    },
     {
         id: "vex",
         name: "殤",

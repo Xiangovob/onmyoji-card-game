@@ -238,7 +238,7 @@ function getOwnerName(owner){
         fox: "狐妖",
         guard: "守衛",
         priest: "祭司",
-        katana: "妖刀"
+        katana: "妖刀",
         vex: "殤"
     };
 

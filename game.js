@@ -264,6 +264,18 @@ function applyEnterEffects(card, owner){
     }
 }
 
+function applySelfDamageSpell(card, owner){
+    dealDamage(owner, card.damage);
+    if(card.tags.includes("draw")){
+        for(let i = 0; i < card.draw; i++){
+            drawCard(player);
+        }
+    }
+    addLog(
+        `${owner.name}使用${card.name}，對自己造成${card.damage}傷害並抽${card.draw}張牌`
+    );
+}
+
 function selectTarget(sideName, targetType, index = null){
     if(!selectingCard) return;
     let side = sideName === "player" ? player : enemy;

@@ -153,15 +153,7 @@ function useCard(index){
             }else{
                 player.energy -= card.cost;
             }
-            dealDamage(owner, card.damage);
-            if(card.tags.includes("draw")){
-                for(let i = 0; i < card.draw; i++){
-                    drawCard(player);
-                }
-            }
-            addLog(
-                `${owner.name}使用${card.name}，對自己造成${card.damage}傷害並抽${card.draw}張牌`
-            );
+            applySelfDamageSpell(card, owner);
             discardPlayerCard(index);
             afterPlayerAction();
             return;

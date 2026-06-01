@@ -285,11 +285,19 @@ function selectTarget(sideName, targetType, index = null){
         return;
     }
     player.energy -= selectingCard.cost;
-    useSpellCard(selectingCard, selectingOwner, {
-        sideName,
-        targetType,
-        target
-    });
+    let success = useSpellCard(
+        selectingCard,
+        selectingOwner,
+        {
+            sideName,
+            targetType,
+            target
+        }
+    );
+    if(success === false){
+        render();
+        return;
+    }
     discardPlayerCard(selectingCardIndex);
     selectingCardIndex = null;
     selectingCard = null;

@@ -228,6 +228,13 @@ function useCard(index){
                 `${owner.name}獲得${card.shield}護盾`
             );
         }
+        // 進場自傷
+        if(card.tags.includes("enterSelfDamage")){
+            dealDamage(owner, card.damage);
+            addLog(
+                `${owner.name}受到${card.damage}點進場傷害`
+            );
+        }
     }
     discardPlayerCard(index);
     afterPlayerAction();

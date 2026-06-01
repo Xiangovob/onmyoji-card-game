@@ -103,8 +103,7 @@ function useSpellCard(card, owner, targetInfo){
             ownerSide,
             enemySide
         );
-
-        return;
+        return true;
     }
 
     // 所有敵方目標
@@ -155,7 +154,7 @@ function useSpellCard(card, owner, targetInfo){
             addLog(
                 `${target.name}已沒有專屬牌`
             );
-            return;
+            return false;
         }
         let random =
             pool[

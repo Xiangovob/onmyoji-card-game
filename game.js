@@ -243,20 +243,7 @@ function useCard(index){
         addLog(
             `${owner.name}進入型態：${card.name}`
         );
-        // 進場護盾
-        if(card.tags.includes("enterShield")){
-            owner.shield += card.shield;
-            addLog(
-                `${owner.name}獲得${card.shield}護盾`
-            );
-        }
-        // 進場自傷
-        if(card.tags.includes("enterSelfDamage")){
-            dealDamage(owner, card.damage);
-            addLog(
-                `${owner.name}受到${card.damage}點進場傷害`
-            );
-        }
+        applyEnterEffects(card, owner);
     }
     discardPlayerCard(index);
     afterPlayerAction();

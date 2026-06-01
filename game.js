@@ -262,6 +262,21 @@ function useCard(index){
     afterPlayerAction();
 }
 
+function applyEnterEffects(card, owner){
+    if(card.tags.includes("enterShield")){
+        owner.shield += card.shield;
+        addLog(
+            `${owner.name}獲得${card.shield}護盾`
+        );
+    }
+    if(card.tags.includes("enterSelfDamage")){
+        dealDamage(owner, card.damage);
+        addLog(
+            `${owner.name}受到${card.damage}點進場傷害`
+        );
+    }
+}
+
 function selectTarget(sideName, targetType, index = null){
     if(!selectingCard) return;
     let side = sideName === "player" ? player : enemy;

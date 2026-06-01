@@ -133,51 +133,41 @@ function useSpellCard(card, owner, targetInfo){
 
         // 敵方本體
         enemySide.coreHp -= card.damage;
-
         addLog(
             `${owner.name}使用${card.name}，對所有敵方目標造成${card.damage}傷害`
         );
-
         triggerPassive(
             owner,
             "onSpell",
             ownerSide,
             enemySide
         );
-
         return;
     }
 
     // 檢索
     if(card.tags.includes("search")){
-
         let pool = ownerSide.deck.filter(
             c => c.owner === target.id
         );
 
         if(pool.length <= 0){
-
             addLog(
                 `${target.name}已沒有專屬牌`
             );
-
             return;
         }
-
         let random =
             pool[
                 Math.floor(
                     Math.random() * pool.length
                 )
             ];
-
         ownerSide.hand.push(random);
-
         ownerSide.deck.splice(
             ownerSide.deck.indexOf(random),
             1
         );
-
         addLog(
             `${owner.name}使用${card.name}，抽出了${target.name}的專屬牌`
         );

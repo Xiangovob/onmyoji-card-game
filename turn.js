@@ -52,18 +52,15 @@ function triggerTurnStartPassives(who){
 
 function endTurn(){
     if(gameOver) return;
-
-    cancelTargetSelect();
-
-    addLog("你的回合結束");
+    selectingCardIndex = null;
+    selectingCard = null;
+    selectingOwner = null;
+    addLog("玩家回合結束");
     clearTurnBuff(player);
     player.savedEnergy = player.energy;
     enemyTurn();
-
     if(gameOver) return;
-
     startTurn(player);
-
     render();
     checkWin();
 }

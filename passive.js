@@ -5,13 +5,9 @@ function triggerPassive(
     enemySide,
     target = null
 ){
-
     if(unit.isDead && triggerType !== "onDeath") return;
-
     if(!unit.passive) return;
-
     unit.passive.forEach(passive => {
-
         if(passive === "healOnTurnStart"&& triggerType === "onTurnStart"){
             healTarget(unit, 1);
             addLog(
@@ -55,10 +51,10 @@ function triggerPassive(
             }
         }
         
-        if(passive === "gainAtkOnHurt" &&triggerType === "onHurt"){
+        if(passive === "gainAtkOnHurt" && triggerType === "onHurt"){
             unit.permanentAtk += 1;
             addLog(
-                `${unit.name}受到傷害，永久獲得+1攻`
+                `${unit.name}獲得+1攻`
             );
         }
     });

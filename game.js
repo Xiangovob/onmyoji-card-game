@@ -297,7 +297,12 @@ function selectTarget(sideName, targetType, index = null){
         render();
         return;
     }
-    player.energy -= selectingCard.cost;
+    if(selectingCard.tags &&selectingCard.tags.includes("instant") &&player.instantChance > 0){
+        player.instantChance--;
+        addLog(`${selectingCard.name}使用瞬發，不消耗鬼火`);
+    }else{
+        player.energy -= selectingCard.cost;
+    }
     discardPlayerCard(selectingCardIndex);
     selectingCardIndex = null;
     selectingCard = null;

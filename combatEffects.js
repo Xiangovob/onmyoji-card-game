@@ -38,7 +38,7 @@ function applyCombatEffects(card, owner){
         );
     }
     // 護盾轉攻擊
-    if(card.tags.includes("shieldScale")){
+    if((card.tags || []).includes("shieldScale")){
         addStatus(owner, {
             type: "atkUp",
             value: owner.shield,

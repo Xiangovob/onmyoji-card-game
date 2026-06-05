@@ -28,7 +28,7 @@ const cardData = [
         name: "狐妖覺醒",
         cost: 1,
         type: "form",
-
+        tags:[],
         formData:{
             atk:2,
             hp:6

@@ -4,19 +4,22 @@ function drawCard(who){
         addLog(`${who.name}牌庫已耗盡`);
         addLog(`${who.name}抽到了「終焉」`);
         gameOver = true;
-        // 敵人抽到
         if(who === enemy){
             alert("你贏了！");
-        }
-        // 玩家抽到
-        else{
+        }else{
             alert("你輸了！");
         }
+
         return;
     }
     // 正常抽牌
+    let drawnCard = who.deck.pop();
+
     if(who.hand.length < who.maxHand){
-        who.hand.push(who.deck.pop());
+        who.hand.push(drawnCard);
+    }else{
+        who.discardPile.push(drawnCard);
+        addLog(`${who.name}手牌已滿，${drawnCard.name}進入棄牌堆`);
     }
 }
 

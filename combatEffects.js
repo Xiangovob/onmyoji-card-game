@@ -49,3 +49,10 @@ function applyCombatEffects(card, owner){
         );
     }
 }
+
+function clearCombatEffects(unit){
+    if(!unit) return;
+    removeStatus(unit, "atkUp");
+    removeStatus(unit, "immuneCombat");
+    removeStatus(unit, "drawOnKill");
+}

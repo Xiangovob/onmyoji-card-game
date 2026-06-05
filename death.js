@@ -30,6 +30,13 @@ function killUnit(unit, who){
         );
     }
     unit.form = null;
+    unit.permanentAtk = 0;
+    unit.turnAtk = 0;
+    unit.combatAtk = 0;
+    unit.debuffAtk = 0;
+    unit.statuses = [];
+    unit.drawOnKill = false;
+    unit.immuneCombat = false;
     unit.reviveCounter = 3;
 
     let enemySide = who === player ? enemy : player;

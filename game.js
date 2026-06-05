@@ -284,7 +284,6 @@ function selectTarget(sideName, targetType, index = null){
     if(!isValidSpellTarget(selectingCard, sideName, targetType, target)){
         return;
     }
-    player.energy -= selectingCard.cost;
     let success = useSpellCard(
         selectingCard,
         selectingOwner,
@@ -298,6 +297,7 @@ function selectTarget(sideName, targetType, index = null){
         render();
         return;
     }
+    player.energy -= selectingCard.cost;
     discardPlayerCard(selectingCardIndex);
     selectingCardIndex = null;
     selectingCard = null;
@@ -342,18 +342,7 @@ function useCombatCard(card, owner){
     clearCombatEffects(player.combat);
     clearCombatEffects(enemy.combat);
 }
-function surrender(){
-    let yes = confirm("確定要投降嗎？");
-    // 按取消
-    if(!yes){
-        return;
-    }
-    addLog("玩家選擇投降");
-    gameOver = true;
-    setTimeout(()=>{
-        window.location.href = "index.html";
-    }, 800);
-}
+
 function checkWin(){
     if(gameOver) return;
     if(player.coreHp <= 0){

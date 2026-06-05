@@ -126,13 +126,16 @@ if(defender && !defender.isDead){
             defender,
             getAtk(attacker)
         );
+    }else{
+        addLog(`${defender.name}免疫了本次戰鬥傷害`);
     }
-
     if(!hasStatus(attacker, "immuneCombat")){
         dealDamage(
             attacker,
             getAtk(defender)
         );
+    }else{
+        addLog(`${attacker.name}免疫了本次戰鬥傷害`);
     }
     addLog(
         `${attacker.name}與${defender.name}交戰`
